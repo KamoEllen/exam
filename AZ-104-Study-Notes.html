@@ -1,0 +1,2744 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AZ-104 Study Notes</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  :root{--bg:#fbfaf7;--fg:#1f2328;--muted:#5b6470;--card:#ffffff;--line:#e3e0d8;--accent:#0b6bcb;--th:#eef3f9;--code:#f2f0ea;--ok:#1a7f37;--bad:#c62828}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15171a;--fg:#e6e6e3;--muted:#9aa3ad;--card:#1d2024;--line:#33373d;--accent:#5aa9ff;--th:#232a33;--code:#262a30}}
+  :root[data-theme="dark"]{--bg:#15171a;--fg:#e6e6e3;--muted:#9aa3ad;--card:#1d2024;--line:#33373d;--accent:#5aa9ff;--th:#232a33;--code:#262a30}
+  html,body{background:var(--bg);color:var(--fg)}
+  body{font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;max-width:900px;margin:0 auto;padding:24px 16px 80px}
+  h1{font-size:1.9rem;line-height:1.25;margin:.2em 0 .6em}
+  h2{font-size:1.45rem;margin-top:2.4em;padding-top:.6em;border-top:2px solid var(--line)}
+  h3{font-size:1.1rem;margin-top:1.8em;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px}
+  a{color:var(--accent)}
+  blockquote{margin:1em 0;padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:8px;color:var(--muted)}
+  table{border-collapse:collapse;width:100%;display:block;overflow-x:auto;margin:1em 0;font-size:.94rem}
+  th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+  th{background:var(--th)}
+  code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:.9em;word-break:break-word}
+  hr{border:0!important;border-top:1px solid var(--line)!important;height:0;margin:2em 0}
+  html,body{overflow-x:hidden}body{overflow-wrap:anywhere}pre{white-space:pre-wrap}
+  li{margin:.2em 0}
+  details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+  summary{cursor:pointer}
+  nav#TOC{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 18px;margin-bottom:2em}
+  nav#TOC ul ul{display:none}
+  #tt{position:fixed;right:16px;bottom:16px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:20px;padding:6px 12px;cursor:pointer}
+  @media print{#tt,nav#TOC{display:none}h3{break-after:avoid}body{max-width:none}}
+  </style>
+</head>
+<body>
+<h1 id="az-104-azure-administrator--study-notes">AZ-104 Azure
+Administrator – Study Notes</h1>
+<p>These notes teach the AZ-104 topics from scratch. Each topic follows
+the same pattern:</p>
+<ol type="1">
+<li><strong>The idea</strong>: what the thing is and why it exists, in
+plain words.</li>
+<li><strong>How it works</strong>: the facts and limits you need to
+know.</li>
+<li><strong>🧭 Scenario guide</strong>: "If you're asked about
+<em>this</em>, the answer is <em>that</em>", including the usual answer,
+the less common one, and the trap.</li>
+<li><strong>🔎 Research</strong>: where to read, watch and practise,
+before or after studying the section.</li>
+</ol>
+<p>The exam has five domains. These notes follow them in order:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>Domain</th>
+<th>Exam weight (approx.)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Manage Azure identities and governance</td>
+<td>20–25%</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Implement and manage storage</td>
+<td>15–20%</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Deploy and manage Azure compute resources</td>
+<td>20–25%</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Implement and manage virtual networking</td>
+<td>15–20%</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Monitor and maintain Azure resources</td>
+<td>10–15%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>General research (use throughout)</strong></p>
+<ul>
+<li>Official exam study guide (lists every skill measured): <a
+href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104">https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104</a></li>
+<li>Exam page and free Microsoft Learn training paths: <a
+href="https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/">https://learn.microsoft.com/en-us/credentials/certifications/azure-administrator/</a></li>
+<li>Official hands-on labs: <a
+href="https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/">https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/</a></li>
+<li>John Savill's Technical Training (YouTube) – search <strong>"AZ-104
+Study Cram"</strong> for a full-course overview video.</li>
+<li>Tutorials Dojo cheat sheets index: <a
+href="https://tutorialsdojo.com/microsoft-azure-cheat-sheets/">https://tutorialsdojo.com/microsoft-azure-cheat-sheets/</a></li>
+<li>Practise for real: a free Azure account lets you click through
+almost everything in these notes.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#part-1--identities-and-governance">Part 1 – Identities and
+Governance</a></li>
+<li><a href="#part-2--storage">Part 2 – Storage</a></li>
+<li><a href="#part-3--compute">Part 3 – Compute</a></li>
+<li><a href="#part-4--virtual-networking">Part 4 – Virtual
+Networking</a></li>
+<li><a href="#part-5--monitor-and-maintain">Part 5 – Monitor and
+Maintain</a></li>
+<li><a href="#how-to-read-az-104-questions">How to read AZ-104
+questions</a></li>
+</ul>
+<hr />
+<h1 id="part-1--identities-and-governance">Part 1 – Identities and
+Governance</h1>
+<h2 id="11-microsoft-entra-id-tenants-and-custom-domains">1.1 Microsoft
+Entra ID, tenants and custom domains</h2>
+<p><strong>The idea.</strong> Microsoft Entra ID (formerly Azure AD) is
+Microsoft's cloud identity service: users, groups, devices, sign-in. A
+<strong>tenant</strong> is your organisation's own copy of Entra ID.
+Every tenant starts with a free domain like
+<code>contoso.onmicrosoft.com</code>. You can't delete or rename this
+initial domain, but you can add your real domain
+(<code>contoso.com</code>) so users sign in as
+<code>name@contoso.com</code>.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>Adding a custom domain is a two-step process: <strong>add</strong>
+it in Entra ID, then <strong>prove you own it</strong> by creating a DNS
+record that Entra gives you.</li>
+<li>The proof record is a <strong>TXT</strong> record (most common) or
+an <strong>MX</strong> record.</li>
+<li>Once verified, you can make it the primary domain for new
+users.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>which DNS record verifies a domain in Entra
+ID</strong> ➜ <strong>TXT</strong> or <strong>MX</strong>. If only one
+is offered, pick that one.</li>
+<li>If the options are A, SOA, RRSIG or CNAME ➜ none of these prove
+ownership:
+<ul>
+<li><strong>A</strong> maps a name to an IP.</li>
+<li><strong>SOA</strong> describes the zone itself.</li>
+<li><strong>RRSIG</strong> is a DNSSEC signature.</li>
+<li><strong>CNAME</strong> is an alias.</li>
+</ul></li>
+<li>Rarely, you'll see domain verification for <strong>App
+Service</strong> custom domains. That uses a <strong>TXT</strong> record
+named <code>asuid.&lt;name&gt;</code> plus a CNAME or A record, which is
+a different service with the same idea.</li>
+</ul>
+<h2 id="12-licenses-free-p1-p2">1.2 Licenses (Free, P1, P2)</h2>
+<p><strong>The idea.</strong> Entra ID has editions. Free covers the
+basics. <strong>P1</strong> and <strong>P2</strong> unlock premium
+features. Buying licenses does nothing on its own: a user only gets
+premium features once a license is <strong>assigned</strong> to
+them.</p>
+<p><strong>How it works.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Edition</th>
+<th>Key features to remember</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Free</td>
+<td>Users, groups, basic SSO, security defaults</td>
+</tr>
+<tr class="even">
+<td><strong>P1</strong></td>
+<td><strong>Conditional Access</strong>, dynamic groups, group-based
+licensing, self-service password reset with on-prem writeback, hybrid
+features, custom device local admins</td>
+</tr>
+<tr class="odd">
+<td><strong>P2</strong></td>
+<td>Everything in P1 + <strong>Privileged Identity Management
+(PIM)</strong>, <strong>Identity Protection</strong> (risk-based
+policies), access reviews</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Assign licenses in <strong>Entra ID ➜ Billing ➜ Licenses ➜ All
+products ➜ Assign</strong> (or from the user's Licenses page).</li>
+<li><strong>Group-based licensing</strong>: assign the license to a
+group, and every member gets it automatically. This is the low-effort
+answer when many users are involved.</li>
+<li>A user needs a <strong>usage location</strong> set before a license
+can be assigned.</li>
+<li>Licenses belong to a tenant and can't be moved to another
+tenant.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"users must get P1/P2 features"</strong> ➜
+<strong>assign the license</strong> (Licenses blade, per user or per
+group).
+<ul>
+<li>For <strong>many users with minimal effort</strong> ➜ group-based
+licensing.</li>
+</ul></li>
+<li>If an option offers <strong>directory roles</strong>,
+<strong>external collaboration settings</strong> or <strong>bulk create
+users</strong> ➜ these don't give features:
+<ul>
+<li>Roles = admin permissions.</li>
+<li>External collaboration = guest (B2B) access.</li>
+<li>Bulk create = makes accounts only.</li>
+</ul></li>
+<li>If you're asked <strong>which edition is needed for PIM or
+risk-based sign-in policies</strong> ➜ <strong>P2</strong>. For
+Conditional Access alone ➜ <strong>P1</strong>.</li>
+</ul>
+<h2 id="13-devices-join-types-and-device-settings">1.3 Devices: join
+types and device settings</h2>
+<p><strong>The idea.</strong> Entra ID tracks devices as well as users,
+so you can trust "a known company laptop" more than "an unknown
+phone".</p>
+<p><strong>How it works – three ways a device relates to Entra
+ID:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Typical device</th>
+<th>Signs in with</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Entra registered</strong></td>
+<td>Personal / BYOD phone or laptop</td>
+<td>Personal account, plus a work account added</td>
+</tr>
+<tr class="even">
+<td><strong>Entra joined</strong></td>
+<td>Company-owned Windows 10/11, cloud-only</td>
+<td>Work (Entra) account</td>
+</tr>
+<tr class="odd">
+<td><strong>Hybrid Entra joined</strong></td>
+<td>Company PC joined to on-prem AD <strong>and</strong> registered in
+Entra</td>
+<td>On-prem AD account (synced)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Device settings</strong> live in <strong>Entra ID ➜ Devices ➜
+Device settings</strong>:</p>
+<ul>
+<li><strong>Users may join devices to Microsoft Entra</strong>: All /
+Selected (a group) / None.</li>
+<li><strong>Users may register their devices</strong>.</li>
+<li><strong>Require MFA to register or join devices</strong>. Microsoft
+now recommends doing this with a Conditional Access policy ("Register or
+join devices" user action) instead.</li>
+<li><strong>Maximum number of devices per user</strong>.</li>
+<li><strong>Additional local administrators on all Microsoft Entra
+joined devices</strong>. This needs Premium. By default, the Global
+Administrator role and the user who joined the device are local
+admins.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"add a local administrator for all joined
+devices"</strong> ➜ <strong>Devices ➜ Device settings ➜ Manage
+additional local administrators</strong> (those users get the
+<em>Microsoft Entra Joined Device Local Administrator</em> role).</li>
+<li>If you're asked <strong>"only members of group X can join
+devices"</strong> ➜ Device settings ➜ <em>Users may join devices</em> =
+<strong>Selected</strong> ➜ that group.</li>
+<li>If you're asked <strong>"users must verify with a phone/MFA when
+joining a device"</strong> ➜ the Device settings MFA toggle, or a
+Conditional Access policy targeting <em>Register or join
+devices</em>.</li>
+<li>If an option mentions <strong>OAuth 2.0 endpoints, app registrations
+or group naming policy</strong> ➜ unrelated to devices (apps, apps and
+Microsoft 365 group names respectively).</li>
+</ul>
+<h2 id="14-conditional-access">1.4 Conditional Access</h2>
+<p><strong>The idea.</strong> Conditional Access is an
+<strong>if/then</strong> engine that runs <strong>after</strong> the
+password step:</p>
+<blockquote>
+<p><strong>IF</strong> (who + what app + where + what device + what
+risk) <strong>THEN</strong> (block, or allow only if extra requirements
+are met, or allow but limit the session).</p>
+</blockquote>
+<p>It needs <strong>P1</strong> (risk-based conditions need
+<strong>P2</strong>).</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li><strong>Assignments (the IF):</strong> users/groups, target apps or
+user actions, conditions (locations / named or trusted IPs, device
+platforms, client apps, sign-in risk, user risk).</li>
+<li><strong>Access controls (the THEN)</strong> come in two kinds, and
+the exam loves to test the difference:</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th><strong>Grant controls</strong> – what you must satisfy to get
+in</th>
+<th><strong>Session controls</strong> – limits once you're in</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Block access</td>
+<td>App enforced restrictions</td>
+</tr>
+<tr class="even">
+<td>Require <strong>MFA</strong> / authentication strength</td>
+<td>Conditional Access App Control (Defender for Cloud Apps)</td>
+</tr>
+<tr class="odd">
+<td>Require <strong>compliant device</strong> (Intune)</td>
+<td><strong>Sign-in frequency</strong></td>
+</tr>
+<tr class="even">
+<td>Require <strong>Microsoft Entra hybrid joined device</strong></td>
+<td>Persistent browser session</td>
+</tr>
+<tr class="odd">
+<td>Require approved client app / app protection policy</td>
+<td>Customize continuous access evaluation</td>
+</tr>
+<tr class="even">
+<td>Require password change / terms of use</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>With several grant requirements you choose <strong>"Require
+all"</strong> or <strong>"Require one"</strong>.</li>
+<li><strong>Report-only mode</strong> lets you test a policy without
+enforcing it.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked to <strong>require MFA, a compliant device or a
+hybrid-joined device</strong> ➜ <strong>Grant control</strong>.</li>
+<li>If you're asked to <strong>force re-sign-in every X hours, or stop
+the browser staying signed in</strong> ➜ <strong>Session
+control</strong>.</li>
+<li>In a Yes/No series where a solution says <em>"enforce session
+control"</em> for an MFA or device requirement ➜ <strong>No</strong>. If
+it says <em>"enforce grant control"</em> ➜ <strong>Yes</strong>.</li>
+<li><strong>"From untrusted locations"</strong> ➜ condition:
+<strong>Locations</strong> (include Any, exclude trusted/named
+locations).</li>
+<li>If you're asked to <strong>block legacy authentication</strong> ➜
+condition: client apps = legacy, grant = <strong>Block</strong>.</li>
+</ul>
+<h2 id="15-azure-rbac--who-can-do-what-to-azure-resources">1.5 Azure
+RBAC – who can do what to Azure resources</h2>
+<p><strong>The idea.</strong> Entra ID tells Azure <strong>who you
+are</strong>. <strong>Azure role-based access control (RBAC)</strong>
+decides <strong>what you can do</strong> to Azure resources (VMs,
+storage, networks). A <strong>role assignment</strong> =
+<strong>who</strong> (security principal) + <strong>what</strong> (role
+definition) + <strong>where</strong> (scope).</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li><strong>Scopes</strong> form a ladder, and permissions
+<strong>inherit downward</strong>: Management group ➜ Subscription ➜
+Resource group ➜ Resource.</li>
+<li>You manage assignments in <strong>Access control (IAM)</strong> on
+the scope you want, for example <em>Subscriptions ➜ pick one ➜ Access
+control (IAM) ➜ Add role assignment</em>.</li>
+<li><strong>Core built-in roles:</strong></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Role</th>
+<th>Can manage resources?</th>
+<th>Can grant access to others?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Owner</strong></td>
+<td>✅ everything</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td><strong>Contributor</strong></td>
+<td>✅ everything</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td><strong>Reader</strong></td>
+<td>❌ view only</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td><strong>User Access Administrator</strong></td>
+<td>❌</td>
+<td>✅ (only manages access)</td>
+</tr>
+<tr class="odd">
+<td>Role Based Access Control Administrator</td>
+<td>❌</td>
+<td>✅ (assignments only, can be constrained)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Service-specific roles</strong> follow the same pattern:
+<em>Virtual Machine Contributor</em>, <em>Network Contributor</em>,
+<em>Storage Account Contributor</em>, and so on.</li>
+<li><strong>Control plane vs data plane:</strong>
+<ul>
+<li><em>Control plane</em> = managing the resource (create or delete a
+storage account, create a file share).</li>
+<li><em>Data plane</em> = touching the data inside (read a blob, open a
+file).</li>
+<li>Roles with <strong>"Data"</strong> in the name (<em>Storage Blob
+Data Reader</em>, <em>Storage File Data SMB Share
+Reader/Contributor/Elevated Contributor</em>) are data-plane only. They
+<strong>can't create or delete the resource itself</strong>.</li>
+</ul></li>
+<li><strong>Entra roles ≠ Azure roles:</strong>
+<ul>
+<li><em>Entra roles</em> (Global Administrator, User Administrator, …)
+manage the <strong>directory</strong>: users, groups, licenses.</li>
+<li><em>Azure roles</em> (Owner, Contributor, …) manage
+<strong>resources</strong>.</li>
+<li>A Global Admin has no resource access by default. They can
+temporarily "elevate access" to User Access Administrator at root
+scope.</li>
+</ul></li>
+</ul>
+<p><strong>Custom roles.</strong> When no built-in role fits, copy one
+and edit it:</p>
+<ol type="1">
+<li><code>Get-AzRoleDefinition -Name "Contributor" | ConvertTo-Json | Out-File role.json</code>
+(<code>Get-AzRoleDefinition</code> = what a role <em>can do</em>;
+<strong><code>ConvertTo-Json</code></strong> turns it into a file you
+can edit).</li>
+<li>Edit the file: new <code>Name</code>, <code>IsCustom: true</code>,
+remove <code>Id</code>, adjust <code>Actions</code> /
+<code>NotActions</code>, set <code>AssignableScopes</code>.</li>
+<li><code>New-AzRoleDefinition -InputFile role.json</code> (CLI:
+<code>az role definition create --role-definition role.json</code>).</li>
+</ol>
+<p>Don't confuse it with:</p>
+<ul>
+<li><code>Get-AzRoleAssignment</code> = <em>who has</em> roles (lists
+assignments), not the role's contents.</li>
+<li><code>ConvertFrom-Json</code> = the opposite direction (JSON text ➜
+PowerShell object).</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"give user X rights to manage everything in
+the subscription, including access"</strong> ➜ <strong>Owner</strong>,
+assigned in <strong>Subscription ➜ Access control (IAM)</strong>.
+<ul>
+<li>Manage everything but <strong>not</strong> access ➜
+<strong>Contributor</strong>.</li>
+<li>Only view ➜ <strong>Reader</strong>.</li>
+<li>Only manage access ➜ <strong>User Access
+Administrator</strong>.</li>
+</ul></li>
+<li>If you're asked <strong>"user must create network objects
+only"</strong> ➜ <strong>Network Contributor</strong> at subscription or
+RG scope.</li>
+<li>If you're asked to <strong>read a role-assignment JSON
+file</strong>:
+<ul>
+<li>Owner/Contributor can deploy VMs and delete resources.</li>
+<li>Reader can't change anything.</li>
+<li>A <em>Data</em> role can't provision the resource (e.g. <em>SMB
+Share Reader</em> can't create file shares).</li>
+</ul></li>
+<li>If you're asked <strong>which command gets a role's JSON to
+customise</strong> ➜
+<code>Get-AzRoleDefinition … | ConvertTo-Json</code>.</li>
+<li>If you're asked <strong>who can enable Traffic Analytics</strong> ➜
+<strong>Owner, Contributor or Network Contributor</strong> (subscription
+scope). So a Contributor assignment ➜ <strong>Yes</strong>.</li>
+<li>If the option says to do it in <strong>Entra group settings, OAuth
+endpoints or Exchange distribution groups</strong> ➜ wrong place.
+Resource permissions are always <strong>IAM</strong>.</li>
+</ul>
+<h2
+id="16-hybrid-identity-entra-connect--the-bit-case-studies-ask-about">1.6
+Hybrid identity (Entra Connect) – the bit case studies ask about</h2>
+<p><strong>The idea.</strong> Many companies already have on-premises
+Active Directory. <strong>Microsoft Entra Connect</strong> (or Cloud
+Sync) copies those users into Entra ID so they have one identity
+everywhere.</p>
+<p><strong>How it works – sign-in methods:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Password hash stored in cloud?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Password hash sync (PHS)</strong></td>
+<td>Yes (a hash of the hash)</td>
+<td>Simplest; works if on-prem is down</td>
+</tr>
+<tr class="even">
+<td><strong>Pass-through authentication (PTA)</strong></td>
+<td><strong>No</strong></td>
+<td>A lightweight agent checks the password against on-prem AD</td>
+</tr>
+<tr class="odd">
+<td><strong>Federation (AD FS)</strong></td>
+<td><strong>No</strong></td>
+<td>Most complex; for special needs (smart cards, third-party MFA)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"prevent storing passwords or hashes in
+Azure" + "minimize admin effort"</strong> ➜ <strong>Pass-through
+authentication</strong>. Use <strong>federation</strong> only if a
+special need is mentioned.</li>
+<li>If you're asked <strong>"simplest, works even if on-prem is
+down"</strong> ➜ <strong>Password hash sync</strong>.</li>
+</ul>
+<h3 id="-research--part-1">🔎 Research – Part 1</h3>
+<ul>
+<li><strong>Read (Microsoft Learn):</strong>
+<ul>
+<li>Add a custom domain: <a
+href="https://learn.microsoft.com/en-us/entra/fundamentals/add-custom-domain">https://learn.microsoft.com/en-us/entra/fundamentals/add-custom-domain</a></li>
+<li>Assign licenses: <a
+href="https://learn.microsoft.com/en-us/entra/fundamentals/license-users-groups">https://learn.microsoft.com/en-us/entra/fundamentals/license-users-groups</a></li>
+<li>Device local admins: <a
+href="https://learn.microsoft.com/en-us/entra/identity/devices/assign-local-admin">https://learn.microsoft.com/en-us/entra/identity/devices/assign-local-admin</a></li>
+<li>Conditional Access grant controls: <a
+href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-grant">https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-grant</a></li>
+<li>Conditional Access session controls: <a
+href="https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-session">https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-session</a></li>
+<li>Azure RBAC overview: <a
+href="https://learn.microsoft.com/en-us/azure/role-based-access-control/overview">https://learn.microsoft.com/en-us/azure/role-based-access-control/overview</a></li>
+<li>Built-in roles list: <a
+href="https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles">https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles</a></li>
+<li>Custom roles with PowerShell: <a
+href="https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles-powershell">https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles-powershell</a></li>
+</ul></li>
+<li><strong>Microsoft Learn path:</strong> search "AZ-104: Manage
+identities and governance in Azure".</li>
+<li><strong>Watch:</strong> John Savill – search "Azure RBAC deep dive"
+and "Conditional Access deep dive".</li>
+<li><strong>Cheat sheets:</strong> <a
+href="https://tutorialsdojo.com/microsoft-entra-id/">https://tutorialsdojo.com/microsoft-entra-id/</a>
+· <a
+href="https://tutorialsdojo.com/azure-role-based-access-control-rbac/">https://tutorialsdojo.com/azure-role-based-access-control-rbac/</a>
+· <a
+href="https://tutorialsdojo.com/microsoft-entra-id-vs-role-based-access-control-rbac/">https://tutorialsdojo.com/microsoft-entra-id-vs-role-based-access-control-rbac/</a></li>
+<li><strong>Hands-on:</strong>
+<ul>
+<li>Add a custom domain to a test tenant and look at the TXT value it
+asks for.</li>
+<li>Assign Reader to a test user and try to delete something.</li>
+<li>Run <code>Get-AzRoleDefinition Contributor | ConvertTo-Json</code>
+in Cloud Shell.</li>
+</ul></li>
+</ul>
+<hr />
+<h1 id="part-2--storage">Part 2 – Storage</h1>
+<h2 id="21-storage-accounts--kinds-and-performance">2.1 Storage accounts
+– kinds and performance</h2>
+<p><strong>The idea.</strong> A storage account is a container (with a
+globally unique name) for four data services: <strong>Blobs</strong>
+(objects/files), <strong>Files</strong> (SMB/NFS shares),
+<strong>Queues</strong> (messages) and <strong>Tables</strong> (NoSQL
+key-value). The account's <strong>kind</strong> and
+<strong>performance</strong> decide which features and redundancy
+options you get.</p>
+<p><strong>How it works.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Kind</th>
+<th>Performance</th>
+<th>Use</th>
+<th>Redundancy options</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>General-purpose v2 (GPv2)</strong></td>
+<td>Standard</td>
+<td>Default for almost everything</td>
+<td>LRS, ZRS, GRS, RA-GRS, GZRS, RA-GZRS</td>
+</tr>
+<tr class="even">
+<td>GPv2</td>
+<td>Premium (page blobs)</td>
+<td>VM unmanaged disks (legacy)</td>
+<td>LRS</td>
+</tr>
+<tr class="odd">
+<td><strong>BlockBlobStorage</strong></td>
+<td>Premium</td>
+<td>Low-latency block blobs</td>
+<td>LRS, ZRS</td>
+</tr>
+<tr class="even">
+<td><strong>FileStorage</strong></td>
+<td>Premium</td>
+<td>High-performance file shares</td>
+<td>LRS, ZRS</td>
+</tr>
+<tr class="odd">
+<td><em>GPv1</em> (legacy)</td>
+<td>Standard/Premium</td>
+<td>Old accounts</td>
+<td>LRS, GRS, RA-GRS – <strong>no ZRS</strong></td>
+</tr>
+<tr class="even">
+<td><em>BlobStorage</em> (legacy)</td>
+<td>Standard</td>
+<td>Old blob-only accounts</td>
+<td>LRS, GRS, RA-GRS – <strong>no ZRS</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Legacy accounts can be <strong>upgraded in place to GPv2</strong>
+(one-way, no downtime).</li>
+</ul>
+<h2 id="22-redundancy-and-changing-it">2.2 Redundancy and changing
+it</h2>
+<p><strong>The idea.</strong> Azure always keeps <strong>3
+copies</strong> of your data in the primary region. Redundancy choices
+decide <strong>where</strong> those copies live and whether there's a
+second region.</p>
+<p><strong>How it works.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Copies in primary region</th>
+<th>Second region?</th>
+<th>Survives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>LRS</strong></td>
+<td>3 in <strong>one datacenter</strong></td>
+<td>No</td>
+<td>Disk/rack failure</td>
+</tr>
+<tr class="even">
+<td><strong>ZRS</strong></td>
+<td>3 across <strong>3 availability zones</strong></td>
+<td>No</td>
+<td>Datacenter (zone) failure</td>
+</tr>
+<tr class="odd">
+<td><strong>GRS</strong></td>
+<td>LRS in primary</td>
+<td>Yes, async to the <strong>paired region</strong></td>
+<td>Region failure (after failover)</td>
+</tr>
+<tr class="even">
+<td><strong>GZRS</strong></td>
+<td>ZRS in primary</td>
+<td>Yes, to the paired region</td>
+<td>Zone <strong>and</strong> region failure</td>
+</tr>
+<tr class="odd">
+<td><strong>RA-GRS / RA-GZRS</strong></td>
+<td>as above</td>
+<td>Yes + <strong>read access</strong> to the secondary at any time</td>
+<td>Same, plus readable secondary</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>The secondary region is always the region's fixed
+pair</strong> (e.g. Southeast Asia ↔︎ East Asia, East US ↔︎ West US).
+<strong>You can't choose it.</strong></li>
+<li>Changing redundancy:
+<ul>
+<li><strong>Adding or removing the geo part, or read access</strong>
+(LRS ↔︎ GRS, GRS ↔︎ RA-GRS) is a simple <strong>setting
+change</strong>.</li>
+<li><strong>Changing the primary-region part</strong> (LRS ↔︎ ZRS, GRS ↔︎
+GZRS) is a <strong>conversion</strong> (live migration / in-place
+conversion) or a manual copy to a new account.</li>
+</ul></li>
+<li><strong>In-place conversion to ZRS rules (exam version):</strong>
+<ul>
+<li>The account must be a kind that supports ZRS (GPv2,
+BlockBlobStorage, FileStorage). GPv1 and BlobStorage don't.</li>
+<li>Convert <strong>from LRS or GRS</strong>. If it's
+<strong>RA-GRS</strong>, first switch to GRS or LRS to drop read access,
+then convert.</li>
+<li>To reach GZRS from LRS: switch to GRS first, then convert.</li>
+</ul></li>
+<li><strong>Archive tier</strong> only works with <strong>LRS, GRS,
+RA-GRS</strong> (not ZRS/GZRS).</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>which account can be converted to ZRS in
+place</strong> ➜ the <strong>GPv2 (or premium block/file) account on LRS
+or GRS</strong>.
+<ul>
+<li>GPv1 and BlobStorage ➜ never (upgrade to GPv2 first).</li>
+<li>RA-GRS ➜ not directly (remove read access first).</li>
+</ul></li>
+<li>If you're asked to <strong>survive a datacenter failure with the
+data staying in one region</strong> ➜ <strong>ZRS</strong>.
+<ul>
+<li>Survive a <strong>region</strong> failure ➜
+<strong>GRS/GZRS</strong>.</li>
+<li>Also <strong>read</strong> from the secondary any time ➜
+<strong>RA-</strong> versions.</li>
+</ul></li>
+<li>If you're asked to <strong>copy data to a specific region that isn't
+the pair</strong> ➜ GRS can't do it ➜ <strong>object
+replication</strong> (2.4).</li>
+</ul>
+<h2 id="23-access-tiers-and-lifecycle-management">2.3 Access tiers and
+lifecycle management</h2>
+<p><strong>The idea.</strong> You pay less to <em>store</em> cold data
+but more to <em>read</em> it. Tiers let you match cost to how often data
+is used. Lifecycle management moves data between tiers
+<strong>automatically</strong>.</p>
+<p><strong>How it works.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th>Online?</th>
+<th>Minimum stay</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Hot</strong></td>
+<td>Yes</td>
+<td>–</td>
+<td>Frequently accessed</td>
+</tr>
+<tr class="even">
+<td><strong>Cool</strong></td>
+<td>Yes</td>
+<td>30 days</td>
+<td>Infrequent access, still instant</td>
+</tr>
+<tr class="odd">
+<td><strong>Cold</strong></td>
+<td>Yes</td>
+<td>90 days</td>
+<td>Rare access, still instant</td>
+</tr>
+<tr class="even">
+<td><strong>Archive</strong></td>
+<td><strong>No (offline)</strong></td>
+<td>180 days</td>
+<td>Long-term retention; <strong>rehydration takes hours</strong> (up to
+~15 h standard; high priority is faster)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>The account's default access tier</strong> (applied to new
+blobs) is <strong>Hot or Cool</strong> on the exam. It's <strong>never
+Archive</strong>. Archive is set <strong>per blob</strong>.</li>
+<li><strong>Lifecycle management policy</strong> (storage account ➜
+<em>Lifecycle management</em>): JSON rules with filters (prefix, blob
+index tags) and actions:
+<ul>
+<li><code>tierToCool</code>, <code>tierToCold</code>,
+<code>tierToArchive</code>, <code>delete</code>.</li>
+<li>Conditions: <em>days after creation / last modification / last
+access</em> (last access needs <strong>access tracking</strong>
+enabled).</li>
+<li>Rules run about once a day.</li>
+</ul></li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked to <strong>"move data to Archive after N days" with
+minimal effort</strong> ➜ <strong>lifecycle management rule</strong>. An
+Azure Function, Logic App, script or manual Copy Blob also works but is
+more effort, so it's wrong when the question says "minimize
+administrative effort".</li>
+<li>If the data is <strong>"infrequently accessed" but must be read
+instantly</strong> ➜ set the <strong>default tier to Cool</strong>, not
+Hot (Hot costs more to store) and not Archive (offline).</li>
+<li>Typical two-answer combo ➜ <strong>Cool default tier + lifecycle
+rule to Archive</strong>.</li>
+<li>If an option says <strong>"set the default tier to Archive"</strong>
+or <strong>"archive on upload"</strong> when instant access is required
+➜ wrong.</li>
+<li>If you're asked to <strong>delete blobs after N days</strong> ➜
+lifecycle <code>delete</code> action.</li>
+</ul>
+<h2
+id="24-data-protection--soft-delete-versioning-object-replication">2.4
+Data protection – soft delete, versioning, object replication</h2>
+<p><strong>The idea.</strong> Redundancy protects against
+<em>hardware</em> failure. It doesn't protect against <strong>someone
+deleting or overwriting data</strong>. These features do.</p>
+<p><strong>How it works.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Protects against</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Blob soft delete</strong></td>
+<td>Deleted blobs</td>
+<td>Retention <strong>1–365 days</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Container soft delete</strong></td>
+<td>Deleted containers</td>
+<td>Retention 1–365 days</td>
+</tr>
+<tr class="odd">
+<td><strong>Blob versioning</strong></td>
+<td>Overwrites &amp; deletes</td>
+<td>Keeps previous versions automatically</td>
+</tr>
+<tr class="even">
+<td><strong>Point-in-time restore</strong></td>
+<td>Bulk mistakes</td>
+<td>Needs versioning + change feed + soft delete</td>
+</tr>
+<tr class="odd">
+<td><strong>File share soft delete</strong></td>
+<td>Deleted Azure file shares</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Object replication</strong></td>
+<td>Need copies elsewhere</td>
+<td><strong>Async copy of block blobs</strong> to another account,
+<strong>any region you choose</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Object replication requires <strong>versioning on both</strong>
+accounts and <strong>change feed on the source</strong>. It's
+<strong>block blobs only</strong> (no append/page blobs) and works on
+GPv2 / premium block blob accounts.</li>
+<li>In the portal, soft delete and versioning live under <strong>Data
+management ➜ Data protection</strong>.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked to <strong>recover deleted data for N days</strong>
+➜ <strong>Data protection ➜ blob (and container) soft delete = N
+days</strong>.</li>
+<li>If you're asked to <strong>recover a previous version after an
+overwrite</strong> ➜ <strong>versioning</strong>.</li>
+<li>If you're asked to <strong>duplicate uploads into a specific
+region</strong> (e.g. Southeast Asia ➜ Australia Central) ➜
+<strong>object replication</strong>.
+<ul>
+<li>Versioning is a <em>prerequisite</em>, not the answer.</li>
+<li>GRS can't pick the region.</li>
+</ul></li>
+<li>Rarely: <strong>"copy to another account in the same region for
+analytics"</strong> ➜ also object replication.</li>
+</ul>
+<h2
+id="25-securing-access--keys-sas-stored-access-policies-firewall">2.5
+Securing access – keys, SAS, stored access policies, firewall</h2>
+<p><strong>The idea.</strong> There are several ways to let someone into
+storage, from "master key" to "narrow, time-limited pass".</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li><strong>Account access keys</strong> (two, so you can rotate) = full
+access to everything. Avoid handing them out.</li>
+<li><strong>Shared Access Signature (SAS)</strong> = a URL token with
+specific permissions, services, resources, IP range and expiry:
+<ul>
+<li><strong>User delegation SAS</strong>: signed with Entra credentials,
+blob only, <strong>most secure</strong>.</li>
+<li><strong>Service SAS</strong>: one service
+(blob/file/queue/table).</li>
+<li><strong>Account SAS</strong>: one or more services.</li>
+</ul></li>
+<li><strong>Stored access policy</strong> = a named policy on a
+container, share, queue or table that a service SAS can point to:
+<ul>
+<li><strong>Maximum 5 per container/share/queue/table.</strong></li>
+<li><strong>Revoke</strong> a SAS by deleting or changing its policy. An
+ad-hoc SAS (no policy) can only be killed by <strong>rotating the
+key</strong> that signed it.</li>
+</ul></li>
+<li><strong>Storage firewall (Networking blade):</strong> "Enabled from
+selected virtual networks and IP addresses":
+<ul>
+<li>Add <strong>VNet subnets</strong> (via service endpoints) and
+<strong>public IP addresses/ranges</strong> (no private ranges).</li>
+<li>Exceptions such as "Allow trusted Microsoft services".</li>
+<li><strong>Private endpoints</strong> give the account a private IP
+inside your VNet.</li>
+</ul></li>
+<li><strong>Entra ID + RBAC</strong> for data access (Storage Blob Data
+… roles) is the modern preferred method.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"only allow access from one public
+IP"</strong> ➜ <strong>Networking (firewall)</strong> ➜ selected
+networks ➜ add that IP.
+<ul>
+<li><strong>Only from a VNet</strong> ➜ firewall + service endpoint, or
+a <strong>private endpoint</strong>.</li>
+</ul></li>
+<li>If you're asked <strong>"temporary, secure access for
+partners"</strong> ➜ <strong>SAS</strong> (with a <strong>stored access
+policy</strong> if you need to revoke it later).</li>
+<li>If you're asked <strong>the max number of stored access
+policies</strong> ➜ <strong>5</strong>.</li>
+<li>If you're asked to <strong>revoke a leaked ad-hoc SAS</strong> ➜
+<strong>regenerate the account key</strong> that signed it.</li>
+</ul>
+<h2 id="26-azure-files-and-identity-based-access">2.6 Azure Files and
+identity-based access</h2>
+<p><strong>The idea.</strong> Azure Files gives you real <strong>SMB
+(and NFS) file shares</strong> in the cloud. Windows, Linux and macOS
+can <strong>map them as a drive</strong>, like an on-prem file server.
+Blob storage can't be mapped as a drive. Only Files can.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>SMB uses <strong>port 445</strong>, which must be open outbound
+(many ISPs block it).</li>
+<li>Authentication options:
+<ol type="1">
+<li><strong>Storage account key</strong> (full access, like a
+superuser).</li>
+<li><strong>Identity-based:</strong> on-prem <strong>AD DS</strong>,
+<strong>Microsoft Entra Domain Services</strong>, or <strong>Microsoft
+Entra Kerberos</strong> (for hybrid identities).</li>
+</ol></li>
+<li>Two layers of permissions:
+<ul>
+<li><strong>Share-level</strong> = Azure RBAC roles: <em>Storage File
+Data SMB Share Reader / Contributor / Elevated Contributor</em>. This
+decides whether you can get into the share at all.</li>
+<li><strong>Directory/file-level</strong> = normal <strong>Windows ACLs
+(NTFS permissions)</strong>, set with File Explorer or
+<code>icacls</code>.</li>
+</ul></li>
+</ul>
+<p><strong>Enabling on-prem AD DS authentication – the order
+matters:</strong></p>
+<ol type="1">
+<li><strong>Sync on-prem AD to Entra ID with Microsoft Entra
+Connect.</strong> Users must be <strong>hybrid identities</strong> that
+exist in both.</li>
+<li><strong>Enable AD DS authentication on the storage account.</strong>
+This registers the account in AD DS (like a computer account) with the
+<code>AzFilesHybrid</code> PowerShell module.</li>
+<li><strong>Assign share-level permissions</strong> (RBAC) <strong>and
+directory/file-level permissions</strong> (ACLs).</li>
+<li><strong>Mount the share</strong> using AD credentials.</li>
+</ol>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"domain-joined machines must mount the share
+using AD DS credentials"</strong> ➜ the 4 steps above, <strong>in that
+order</strong>. Identity has to exist before auth can be enabled, auth
+before permissions, and permissions before mounting.</li>
+<li>If you're asked to <strong>map a drive letter to Blob
+storage</strong> ➜ not possible. Use Azure Files, or Storage Explorer /
+AzCopy for blobs.</li>
+<li>If there's <strong>no on-prem AD and you want domain services in the
+cloud</strong> ➜ <strong>Entra Domain Services</strong>.</li>
+</ul>
+<h2 id="27-azure-file-sync">2.7 Azure File Sync</h2>
+<p><strong>The idea.</strong> Keep your on-prem Windows file server, but
+make an <strong>Azure file share the central copy</strong>. The server
+becomes a fast local <strong>cache</strong>, and many servers in many
+offices can sync the same share. <strong>Cloud tiering</strong> keeps
+hot files local and leaves cold files in Azure as pointers.</p>
+<p><strong>How it works – the parts:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Part</th>
+<th>What it is</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Storage Sync Service</strong></td>
+<td>Top-level Azure resource</td>
+<td>A server can register with <strong>only one</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Sync group</strong></td>
+<td>Defines what syncs with what</td>
+<td>Exactly <strong>one cloud endpoint</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Cloud endpoint</strong></td>
+<td>The Azure file share</td>
+<td>One per sync group</td>
+</tr>
+<tr class="even">
+<td><strong>Server endpoint</strong></td>
+<td>A folder/volume path on a registered server</td>
+<td>Many per group, <strong>but only one per server in the same sync
+group</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Azure File Sync agent</strong></td>
+<td>Software installed on the Windows Server</td>
+<td>Needed before registration</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Setup order (memorise: Agent ➜ Register ➜ Cloud ➜
+Server):</strong> 0. Create the Storage Sync Service and the Azure file
+share (and, for older guidance, disable IE Enhanced Security
+Configuration on the server for registration).</p>
+<ol type="1">
+<li><strong>Install the Azure File Sync agent</strong> on the
+server.</li>
+<li><strong>Register the server</strong> with the Storage Sync
+Service.</li>
+<li><strong>Create a sync group and its cloud endpoint</strong> (the
+file share).</li>
+<li><strong>Add a server endpoint</strong> (a folder on the registered
+server).</li>
+</ol>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked for <strong>the order of steps</strong> ➜
+<strong>Agent, Register, Sync group + cloud endpoint, Server
+endpoint</strong>. Each step needs the previous one to exist.</li>
+<li>If you're asked <strong>"can I add a second Azure file share to the
+same sync group?"</strong> ➜ <strong>No</strong>. One cloud endpoint per
+group; create another sync group.</li>
+<li>If you're asked <strong>"can I add another folder from the
+<em>same</em> server to the same sync group?"</strong> ➜
+<strong>No</strong> (one server endpoint per server per group). A
+<strong>different server</strong> ➜ <strong>Yes</strong>.</li>
+<li>If you're asked <strong>"can one server sync with two Storage Sync
+Services?"</strong> ➜ <strong>No</strong>.</li>
+<li>If you're asked to <strong>save local disk space but keep everything
+available</strong> ➜ <strong>cloud tiering</strong>.</li>
+</ul>
+<h2 id="28-moving-data-into-azure-storage">2.8 Moving data into Azure
+Storage</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Azure Storage Explorer</strong></td>
+<td>GUI app (Windows/macOS/Linux); upload/download/manage blobs, files,
+queues, tables <strong>over the Internet</strong></td>
+</tr>
+<tr class="even">
+<td><strong>AzCopy</strong></td>
+<td>Command line; fast, scriptable, <code>azcopy sync</code>; over the
+Internet</td>
+</tr>
+<tr class="odd">
+<td>Azure portal upload</td>
+<td>Small, one-off files</td>
+</tr>
+<tr class="even">
+<td><strong>Azure Import/Export</strong></td>
+<td><strong>Ship your own disks</strong> to an Azure datacenter (Blob
+&amp; Files)</td>
+</tr>
+<tr class="odd">
+<td><strong>Azure Data Box</strong> family</td>
+<td>Microsoft ships you a device: Data Box Disk (small, tens of TB),
+Data Box (~100 TB class), Data Box Heavy (~1 PB). Offline, huge volumes,
+slow links</td>
+</tr>
+<tr class="even">
+<td><strong>Azure File Sync</strong></td>
+<td>Ongoing sync of file servers</td>
+</tr>
+<tr class="odd">
+<td>Data Box Gateway / Azure Stack Edge</td>
+<td>Online appliance for continuous transfer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"transfer files to Blob over the Internet,
+minimal effort"</strong> ➜ <strong>Storage Explorer</strong> (GUI) or
+<strong>AzCopy</strong> (scriptable).</li>
+<li>If you're asked about <strong>lots of TB with limited bandwidth / no
+Internet transfer</strong> ➜ <strong>Data Box</strong> (Microsoft's
+device) or <strong>Import/Export</strong> (your own disks).</li>
+<li>If an option says to <strong>map a drive to a Blob
+container</strong> ➜ wrong (drive mapping = Azure Files only).</li>
+</ul>
+<h3 id="-research--part-2">🔎 Research – Part 2</h3>
+<ul>
+<li><strong>Read (Microsoft Learn):</strong>
+<ul>
+<li>Redundancy: <a
+href="https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy">https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy</a></li>
+<li>Changing redundancy: <a
+href="https://learn.microsoft.com/en-us/azure/storage/common/redundancy-migration">https://learn.microsoft.com/en-us/azure/storage/common/redundancy-migration</a></li>
+<li>Access tiers: <a
+href="https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview">https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview</a></li>
+<li>Lifecycle management: <a
+href="https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-overview">https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-overview</a></li>
+<li>Soft delete for blobs: <a
+href="https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-blob-overview">https://learn.microsoft.com/en-us/azure/storage/blobs/soft-delete-blob-overview</a></li>
+<li>Object replication: <a
+href="https://learn.microsoft.com/en-us/azure/storage/blobs/object-replication-overview">https://learn.microsoft.com/en-us/azure/storage/blobs/object-replication-overview</a></li>
+<li>Stored access policies: <a
+href="https://learn.microsoft.com/en-us/rest/api/storageservices/define-stored-access-policy">https://learn.microsoft.com/en-us/rest/api/storageservices/define-stored-access-policy</a></li>
+<li>Storage firewall: <a
+href="https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security">https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security</a></li>
+<li>Azure Files AD DS auth: <a
+href="https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-active-directory-enable">https://learn.microsoft.com/en-us/azure/storage/files/storage-files-identity-auth-active-directory-enable</a></li>
+<li>File Sync deployment: <a
+href="https://learn.microsoft.com/en-us/azure/storage/file-sync/file-sync-deployment-guide">https://learn.microsoft.com/en-us/azure/storage/file-sync/file-sync-deployment-guide</a></li>
+<li>AzCopy: <a
+href="https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10">https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10</a></li>
+</ul></li>
+<li><strong>Microsoft Learn path:</strong> search "AZ-104: Implement and
+manage storage in Azure".</li>
+<li><strong>Watch:</strong> John Savill – search "Azure Storage deep
+dive", "Azure Files deep dive", "Azure File Sync".</li>
+<li><strong>Cheat sheets:</strong> <a
+href="https://tutorialsdojo.com/azure-storage-overview/">https://tutorialsdojo.com/azure-storage-overview/</a>
+· <a
+href="https://tutorialsdojo.com/azure-file-storage/">https://tutorialsdojo.com/azure-file-storage/</a>
+· <a
+href="https://tutorialsdojo.com/azure-blob-storage/">https://tutorialsdojo.com/azure-blob-storage/</a>
+· <a
+href="https://tutorialsdojo.com/locally-redundant-storage-lrs-vs-zone-redundant-storage-zrs/">https://tutorialsdojo.com/locally-redundant-storage-lrs-vs-zone-redundant-storage-zrs/</a>
+· <a
+href="https://tutorialsdojo.com/azure-blob-vs-disk-vs-file-storage/">https://tutorialsdojo.com/azure-blob-vs-disk-vs-file-storage/</a></li>
+<li><strong>Hands-on:</strong>
+<ul>
+<li>Create a GPv2 account, open <em>Redundancy</em> and see which
+options are offered.</li>
+<li>Write a lifecycle rule in the portal and view its JSON.</li>
+<li>Enable soft delete, delete a blob, then undelete it.</li>
+<li>Generate a SAS and open it in a browser.</li>
+<li>Install Storage Explorer.</li>
+</ul></li>
+</ul>
+<hr />
+<h1 id="part-3--compute">Part 3 – Compute</h1>
+<h2 id="31-keeping-vms-available-availability-sets-zones-regions">3.1
+Keeping VMs available: availability sets, zones, regions</h2>
+<p><strong>The idea.</strong> Things fail at different sizes: a server,
+a rack, a whole datacenter, a whole region. Each Azure feature protects
+against a specific size of failure. Learn the ladder:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Failure / event</th>
+<th>Protection</th>
+<th>SLA (VMs)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Planned maintenance reboots</td>
+<td><strong>Update domains</strong> (availability set)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Rack / power / network-switch failure</td>
+<td><strong>Fault domains</strong> (availability set)</td>
+<td>99.95%</td>
+</tr>
+<tr class="odd">
+<td><strong>Whole datacenter</strong> fails</td>
+<td><strong>Availability zones</strong> (physically separate datacenters
+in one region, own power/cooling/network, at least 3 per enabled
+region)</td>
+<td>99.99%</td>
+</tr>
+<tr class="even">
+<td><strong>Whole region</strong> fails</td>
+<td>Second region: <strong>Azure Site Recovery</strong>, paired regions,
+GRS</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>How availability sets work.</strong></p>
+<ul>
+<li><strong>Fault domain (FD)</strong> = a group of hardware sharing
+power and network (think "rack"). Max <strong>3</strong> (2 in some
+regions).</li>
+<li><strong>Update domain (UD)</strong> = a group rebooted
+<strong>together</strong> during <strong>planned</strong> platform
+maintenance. Up to <strong>20</strong> (default 5). <strong>Only one UD
+is updated at a time</strong>, with 30 minutes to recover before the
+next.</li>
+<li>VMs are spread round-robin across FDs and UDs. A VM can only join a
+set <strong>when it's created</strong>.</li>
+<li>An availability set is <strong>inside one datacenter</strong>, so it
+can't survive that datacenter going down.</li>
+<li>A VM uses <strong>either</strong> an availability set
+<strong>or</strong> a zone, never both.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"keep VMs running if a datacenter becomes
+unavailable"</strong> ➜ <strong>one VM in each Availability
+Zone</strong>. Never "all in one zone" and never "an availability set"
+(sets live in one datacenter).</li>
+<li>If you're asked <strong>"keep ≥2 VMs available during planned
+maintenance"</strong> ➜ more <strong>update domains</strong> (e.g.
+<strong>3 UDs</strong>, with <strong>2+ FDs</strong> for hardware
+safety). Pick <strong>UD 3 / FD 2</strong> over UD 3 / FD 1 (no hardware
+protection) and over UD 2 / FD 3 (fewer UDs, and FDs don't help planned
+maintenance).</li>
+<li>If you're asked <strong>"protect against a rack/hardware failure,
+cheapest, single datacenter OK"</strong> ➜ <strong>availability
+set</strong> (FDs).</li>
+<li>If you're asked <strong>"protect against a region outage"</strong> ➜
+<strong>Azure Site Recovery</strong> to another region (Part 5.5).</li>
+<li>Memory hook: <strong>Update = Updates (planned). Fault = Failures
+(hardware).</strong></li>
+</ul>
+<h2 id="32-proximity-placement-groups-ppg">3.2 Proximity placement
+groups (PPG)</h2>
+<p><strong>The idea.</strong> Sometimes you want VMs <strong>physically
+close</strong> together for very low network latency (trading apps, HPC,
+SAP). A PPG asks Azure to put them in the same datacenter.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>A PPG is created in a <strong>region</strong>. VMs, scale sets and
+availability sets that use it <strong>must be in the same
+region</strong>.</li>
+<li>The <strong>resource group's location doesn't matter</strong>. Only
+the resources' own regions do.</li>
+<li>With zones, a PPG effectively pins you to one zone. There's a
+trade-off between low latency and resilience.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>which PPG a VM/VMSS can use</strong> ➜ only
+PPGs in the <strong>same region as the VM/VMSS</strong>. Ignore which
+resource group anything is in.</li>
+<li>If you're asked about <strong>lowest latency between VMs</strong> ➜
+PPG (and accelerated networking).</li>
+</ul>
+<h2 id="33-vm-states-ip-addresses-redeploy-and-reapply">3.3 VM states,
+IP addresses, redeploy and reapply</h2>
+<p><strong>The idea.</strong> "Stopped" means two different things in
+Azure, and it changes what you pay for and whether you keep your IP.</p>
+<p><strong>How it works.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>State</th>
+<th>How you get there</th>
+<th>Billed for compute?</th>
+<th>Dynamic public IP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Running</td>
+<td>Start</td>
+<td>Yes</td>
+<td>Assigned</td>
+</tr>
+<tr class="even">
+<td><strong>Stopped</strong> (allocated)</td>
+<td>Shut down from <strong>inside the OS</strong></td>
+<td><strong>Yes</strong></td>
+<td>Kept</td>
+</tr>
+<tr class="odd">
+<td><strong>Stopped (deallocated)</strong></td>
+<td><strong>Stop</strong> in the portal / CLI</td>
+<td><strong>No</strong></td>
+<td><strong>Released</strong> (a new one on next start)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Static public IPs</strong> are kept until you delete them.
+<strong>Standard SKU public IPs are always static.</strong> Basic SKU is
+retired.</li>
+<li><strong>Redeploy</strong> = move the VM to a <strong>new
+host</strong> (fixes host or connectivity problems). The
+<strong>temporary disk is lost</strong>.</li>
+<li><strong>Reapply</strong> = re-run the VM's provisioning to fix a
+<strong>"Failed" provisioning state</strong>.</li>
+<li><strong>Resize</strong> may need the VM deallocated if the new size
+isn't available on the current hardware cluster.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"can't RDP; NSG allows 3389; VM has no
+public IP shown"</strong> ➜ the VM is <strong>deallocated</strong> ➜
+<strong>Start it</strong>. Redeploy is extra effort for a different
+problem. The NSG rule is fine if it's top priority and allows 3389.</li>
+<li>If you're asked <strong>"the IP must never change"</strong> ➜ use a
+<strong>static</strong> public IP.</li>
+<li>If you're asked <strong>"VM stuck in Failed state"</strong> ➜
+<strong>Reapply</strong>. <strong>"Can't connect, suspected host
+issue"</strong> ➜ <strong>Redeploy</strong>.</li>
+<li>If you're asked <strong>"stop paying for compute"</strong> ➜
+<strong>Stop (deallocate)</strong>. Shutting down inside the OS still
+bills.</li>
+</ul>
+<h2 id="34-disks-managed-vs-unmanaged-and-disk-types">3.4 Disks: managed
+vs unmanaged and disk types</h2>
+<p><strong>The idea.</strong> A VM's disks are page blobs.
+<strong>Managed disks</strong> = Azure manages the storage account for
+you. <strong>Unmanaged</strong> = you manage the storage accounts
+yourself (legacy).</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li><strong>Managed disks are required</strong> for availability zones,
+for moving VMs into zones with Site Recovery, and for most modern
+features. Converting unmanaged ➜ managed: deallocate, then convert
+(one-way).</li>
+<li>Disk types:
+<ul>
+<li>Standard HDD (cheapest, dev/test)</li>
+<li>Standard SSD</li>
+<li>Premium SSD (production)</li>
+<li>Premium SSD v2</li>
+<li><strong>Ultra Disk</strong> (highest IOPS; data disks only; needs
+"Ultra Disk compatibility" enabled and a supporting region/zone)</li>
+</ul></li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"VM must be movable into Availability Zones
+with Site Recovery"</strong> and the VM shows <em>Managed disks:
+Disabled</em> ➜ change <strong>Managed disks</strong>. The disk type
+(HDD/SSD) doesn't matter. Ultra Disk is for extreme performance, not
+resilience.</li>
+<li>If you're asked about <strong>highest IOPS / lowest latency for a
+database</strong> ➜ <strong>Ultra Disk</strong> (or Premium SSD
+v2).</li>
+</ul>
+<h2 id="35-vcpu-quotas">3.5 vCPU quotas</h2>
+<p><strong>The idea.</strong> Each subscription has vCPU limits
+<strong>per region</strong> so nobody accidentally deploys thousands of
+cores.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>Two limits must <strong>both</strong> be satisfied:
+<ol type="1">
+<li><strong>Total regional vCPUs</strong>.</li>
+<li><strong>VM-family vCPUs</strong> (e.g. Standard DSv3 family, Av2
+family).</li>
+</ol></li>
+<li>Usage counts the cores of <strong>both running and
+stopped-deallocated VMs</strong> (Microsoft's docs: <em>"based on the
+total number of cores in use, both allocated and deallocated"</em>).
+Only <strong>deleting</strong> a VM frees its quota.</li>
+<li>Quotas are per region: a VM in South Central US doesn't use North
+Central US quota.</li>
+<li>Raise limits with a <strong>quota increase request</strong>
+(Subscriptions ➜ Usage + quotas, or the Quotas page).</li>
+</ul>
+<p><strong>Worked method.</strong> Write down the regional limit, add up
+existing VM cores in that region (running <strong>and</strong>
+deallocated), then add each new VM <strong>in the order given</strong>
+and check both limits each time.</p>
+<blockquote>
+<p>Example: regional limit 15. Existing VMs: 4 cores running + 8 cores
+deallocated = <strong>12 used</strong>.</p>
+<ul>
+<li>+2-core VM ➜ 14 ✅</li>
+<li>another +2 ➜ 16 ❌</li>
+<li>+8 ➜ 22 ❌</li>
+</ul>
+</blockquote>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"can VM X be created in region Y"</strong> ➜
+do the sum above. <strong>Deallocated VMs still count.</strong> VMs in
+other regions don't.</li>
+<li>If both limits are hit ➜ request an increase or
+<strong>delete</strong> unused VMs (deallocating isn't enough).</li>
+</ul>
+<h2 id="36-scale-sets-and-vm-extensions">3.6 Scale sets and VM
+extensions</h2>
+<p><strong>The idea.</strong> A <strong>virtual machine scale set
+(VMSS)</strong> is a group of identical, load-balanced VMs that can
+<strong>autoscale</strong>. <strong>Extensions</strong> are small agents
+that run tasks inside VMs after deployment, for example installing
+software.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li><strong>Custom Script Extension</strong> downloads a script (from
+Storage/GitHub) and runs it: install IIS, web components, configure the
+app.</li>
+<li>In an ARM template for a VMSS, extensions go in
+<strong><code>virtualMachineProfile.extensionProfile</code></strong>.</li>
+<li>Other options: <strong>DSC extension</strong> (desired state),
+<strong>cloud-init</strong> (Linux, first boot), <strong>custom
+images</strong> (bake everything in).</li>
+<li>After changing the scale set model, instances update according to
+the <strong>upgrade policy</strong> (Manual / Automatic / Rolling).</li>
+<li>Autoscale rules: metric-based (CPU &gt; 70% for 10 min ➜ +1) or
+schedule-based. Always set min, max and default instance counts.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"automatically install web components on
+scale set VMs"</strong> ➜ <strong>create a configuration script</strong>
++ <strong>add the Custom Script Extension in the template's
+<code>extensionProfile</code></strong>.</li>
+<li>If an option says <strong>"create a new scale set"</strong>,
+<strong>"automation account"</strong> or <strong>"VPN client
+package"</strong> ➜ these don't install software on the instances.</li>
+<li>If you're asked about a <strong>pre-baked golden image</strong> ➜
+custom image / Azure Compute Gallery.</li>
+</ul>
+<h2 id="37-infrastructure-as-code-arm-templates-and-bicep">3.7
+Infrastructure as code: ARM templates and Bicep</h2>
+<p><strong>The idea.</strong> Describe your infrastructure in a file and
+Azure builds it the same way every time. <strong>ARM templates</strong>
+are JSON. <strong>Bicep</strong> is a cleaner language that compiles to
+ARM.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>Template sections: <code>parameters</code>, <code>variables</code>,
+<code>resources</code>, <code>outputs</code>.</li>
+<li><strong>Export template:</strong> in the portal, any
+<strong>resource group</strong> (or single resource) ➜ <em>Export
+template</em> gives you the ARM JSON of what exists now. This is great
+for reproducing an environment.</li>
+<li>Deployment <strong>scopes</strong>:
+<ul>
+<li>resource group (<code>az deployment group create</code>)</li>
+<li>subscription (<code>az deployment sub create</code>)</li>
+<li>management group</li>
+<li>tenant</li>
+</ul></li>
+<li>Bicep keywords:
+<ul>
+<li><strong><code>targetScope</code></strong> = the
+<strong>kind</strong> of scope the whole file deploys to
+(<code>'resourceGroup'</code> is the default, or
+<code>'subscription'</code>, …).</li>
+<li><strong><code>scope</code></strong> = the <strong>exact</strong>
+target for a module or resource, e.g.
+<code>scope: resourceGroup('WebAppRG')</code>.</li>
+<li><code>location</code> = Azure region.</li>
+<li><code>tags</code> = labels.</li>
+</ul></li>
+<li>Deployment modes: <strong>Incremental</strong> (default; adds or
+updates, leaves extras) vs <strong>Complete</strong> (deletes anything
+not in the template).</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"modify the Bicep file so it deploys into
+resource group X"</strong> ➜ <strong><code>scope</code></strong>.
+<code>targetScope</code> only says "a resource group" in general, not
+which one. <code>location</code> is the region.</li>
+<li>If you're asked to <strong>capture the current state of all
+resources to automate future deployments</strong> ➜ <strong>Export
+template</strong> from the resource group. Capturing a VM image covers
+one VM only. Redeploy/reapply are fixes, not captures.</li>
+<li>If you're asked <strong>"remove resources not defined in the
+template"</strong> ➜ <strong>Complete mode</strong>.</li>
+</ul>
+<h2 id="38-app-service-and-app-service-plans">3.8 App Service and App
+Service plans</h2>
+<p><strong>The idea.</strong> App Service hosts web apps without
+managing VMs. An <strong>App Service plan</strong> is the set of VMs
+(compute) your apps run on. <strong>You pay for the plan</strong>, and
+every app in the plan shares it.</p>
+<p><strong>How it works.</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th>Highlights</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Free / Shared</td>
+<td>Shared infrastructure, dev/test, no scale out</td>
+</tr>
+<tr class="even">
+<td>Basic</td>
+<td>Dedicated VMs, manual scale (up to 3), custom domains</td>
+</tr>
+<tr class="odd">
+<td><strong>Standard</strong></td>
+<td><strong>Autoscale</strong>, <strong>deployment slots</strong> (5),
+backups</td>
+</tr>
+<tr class="even">
+<td>Premium v3</td>
+<td>More instances &amp; slots, better hardware</td>
+</tr>
+<tr class="odd">
+<td>Isolated (App Service Environment)</td>
+<td>Dedicated, network-isolated</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>A plan belongs to <strong>one region</strong> and one OS type. Apps
+in the same region can share a plan.</li>
+<li><strong>Deployment slots</strong> (staging ➜ swap to production) and
+<strong>autoscale</strong> need <strong>Standard or
+higher</strong>.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked to <strong>deploy N web apps in the same region at
+the lowest cost</strong> ➜ <strong>one App Service plan</strong>. Use
+more plans only for <strong>different regions</strong>, different OS, or
+isolation or performance needs.</li>
+<li>If you're asked about <strong>staging slots / swap</strong> or
+<strong>autoscale</strong> ➜ at least <strong>Standard</strong>.</li>
+<li>If an option says <strong>Application Gateway</strong> or a
+<strong>CDN endpoint</strong> to <em>host</em> apps ➜ these don't host
+code. App Gateway is a load balancer, and a CDN caches content.</li>
+</ul>
+<h2
+id="39-azure-container-apps-networking-and-other-container-options">3.9
+Azure Container Apps networking (and other container options)</h2>
+<p><strong>The idea.</strong> Container Apps runs containers
+serverlessly. Apps live in an <strong>environment</strong>, which can
+use your own VNet.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>Environment types and <strong>minimum subnet size</strong> (the
+subnet must be <strong>dedicated</strong> to the environment):
+<ul>
+<li><strong>Workload profiles</strong> (supports UDRs, NAT Gateway
+egress) ➜ <strong>/27</strong>.</li>
+<li><strong>Consumption-only</strong> (legacy; no UDR / NAT GW) ➜
+<strong>/23</strong>.</li>
+</ul></li>
+<li>The subnet can be in any VNet in the same region that has free
+address space.</li>
+<li>Other container services:
+<ul>
+<li><strong>Azure Container Instances (ACI)</strong>: single containers,
+quick, no orchestration.</li>
+<li><strong>AKS</strong>: full Kubernetes.</li>
+<li><strong>App Service for containers</strong>: web apps.</li>
+<li><strong>Azure Container Registry (ACR)</strong>: stores images.</li>
+</ul></li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked for <strong>the smallest subnet for a
+workload-profiles environment</strong> ➜ <strong>/27</strong>. If /27
+isn't offered, pick the next smallest that is <strong>larger</strong>
+(e.g. /26).
+<ul>
+<li>Consumption-only ➜ <strong>/23</strong>.</li>
+</ul></li>
+<li>If you're asked about <strong>run one container quickly, no
+orchestration</strong> ➜ <strong>ACI</strong>. <strong>Full Kubernetes
+control</strong> ➜ <strong>AKS</strong>.</li>
+</ul>
+<h3 id="-research--part-3">🔎 Research – Part 3</h3>
+<ul>
+<li><strong>Read (Microsoft Learn):</strong>
+<ul>
+<li>VM availability options: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-machines/availability">https://learn.microsoft.com/en-us/azure/virtual-machines/availability</a></li>
+<li>Maintenance and update domains: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-and-updates">https://learn.microsoft.com/en-us/azure/virtual-machines/maintenance-and-updates</a></li>
+<li>VM states &amp; billing: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-machines/states-billing">https://learn.microsoft.com/en-us/azure/virtual-machines/states-billing</a></li>
+<li>Proximity placement groups: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-machines/co-location">https://learn.microsoft.com/en-us/azure/virtual-machines/co-location</a></li>
+<li>vCPU quotas: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-machines/quotas">https://learn.microsoft.com/en-us/azure/virtual-machines/quotas</a></li>
+<li>Install apps in a scale set with a template: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/tutorial-install-apps-template">https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/tutorial-install-apps-template</a></li>
+<li>Export templates: <a
+href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/export-template-portal">https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/export-template-portal</a></li>
+<li>Bicep scope functions: <a
+href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-scope">https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-scope</a></li>
+<li>App Service plans: <a
+href="https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans">https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans</a></li>
+<li>Container Apps networking: <a
+href="https://learn.microsoft.com/en-us/azure/container-apps/networking">https://learn.microsoft.com/en-us/azure/container-apps/networking</a></li>
+<li>Moving VMs into zones with ASR: <a
+href="https://learn.microsoft.com/en-us/azure/site-recovery/move-azure-vms-avset-azone">https://learn.microsoft.com/en-us/azure/site-recovery/move-azure-vms-avset-azone</a></li>
+</ul></li>
+<li><strong>Microsoft Learn path:</strong> search "AZ-104: Deploy and
+manage Azure compute resources".</li>
+<li><strong>Watch:</strong> John Savill – search "Azure VM availability
+sets vs zones", "Azure Bicep", "Azure App Service deep dive".</li>
+<li><strong>Cheat sheets:</strong> <a
+href="https://tutorialsdojo.com/azure-virtual-machines/">https://tutorialsdojo.com/azure-virtual-machines/</a>
+· <a
+href="https://tutorialsdojo.com/azure-app-service/">https://tutorialsdojo.com/azure-app-service/</a>
+· <a
+href="https://tutorialsdojo.com/azure-resource-manager-arm/">https://tutorialsdojo.com/azure-resource-manager-arm/</a></li>
+<li><strong>Hands-on:</strong>
+<ul>
+<li>Create an availability set and look at the FD/UD fields.</li>
+<li>Stop (deallocate) a VM with a dynamic IP and start it again, then
+compare the IPs.</li>
+<li>Export a resource group template.</li>
+<li>Open <em>Usage + quotas</em> in your subscription.</li>
+</ul></li>
+</ul>
+<hr />
+<h1 id="part-4--virtual-networking">Part 4 – Virtual Networking</h1>
+<h2 id="41-vnets-subnets-and-ip-maths">4.1 VNets, subnets and IP
+maths</h2>
+<p><strong>The idea.</strong> A <strong>virtual network (VNet)</strong>
+is your private network in Azure, in <strong>one region</strong>. It's
+split into <strong>subnets</strong>. Resources in the same VNet can talk
+to each other by default.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>Address space uses CIDR notation. <strong>Azure reserves 5 IPs in
+every subnet</strong> (first 4 + last).</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>CIDR</th>
+<th>Total IPs</th>
+<th>Usable in Azure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>/29 (smallest subnet)</td>
+<td>8</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>/28</td>
+<td>16</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>/27</td>
+<td>32</td>
+<td>27</td>
+</tr>
+<tr class="even">
+<td>/26</td>
+<td>64</td>
+<td>59</td>
+</tr>
+<tr class="odd">
+<td>/24</td>
+<td>256</td>
+<td>251</td>
+</tr>
+<tr class="even">
+<td>/23</td>
+<td>512</td>
+<td>507</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Special subnets and their usual minimum sizes:
+<ul>
+<li><code>GatewaySubnet</code> (VPN/ExpressRoute) ➜ <strong>/27</strong>
+recommended.</li>
+<li><code>AzureBastionSubnet</code> ➜ <strong>/26</strong>.</li>
+<li><code>AzureFirewallSubnet</code> ➜ <strong>/26</strong>.</li>
+</ul></li>
+<li>VNets that you want to connect (peer/VPN) <strong>must not have
+overlapping address spaces</strong>.</li>
+</ul>
+<h2 id="42-network-security-groups-nsgs">4.2 Network security groups
+(NSGs)</h2>
+<p><strong>The idea.</strong> An NSG is a list of <strong>allow/deny
+rules</strong> (a basic firewall) for traffic in and out of subnets or
+network interfaces.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>Each rule has: <strong>priority</strong> (100–4096, <strong>lower
+number wins and is checked first</strong>), source, destination, port,
+protocol, allow/deny. Processing stops at the first match.</li>
+<li><strong>Default rules</strong> (can't be deleted; override them with
+lower numbers):
+<ul>
+<li>Inbound: <strong>65000 AllowVnetInBound</strong>, <strong>65001
+AllowAzureLoadBalancerInBound</strong>, <strong>65500
+DenyAllInBound</strong>.</li>
+<li>Outbound: 65000 AllowVnetOutBound, 65001 AllowInternetOutBound,
+65500 DenyAllOutBound.</li>
+</ul></li>
+<li>You can associate an NSG with <strong>subnets and/or NICs</strong>.
+<strong>One NSG can be reused on many subnets/NICs</strong> in the same
+region. If both a subnet NSG and a NIC NSG exist, traffic must pass
+<strong>both</strong>.</li>
+<li>Rules can target specific IPs, ranges, <strong>service tags</strong>
+(Internet, VirtualNetwork, Storage…) or <strong>application security
+groups</strong>.</li>
+<li>Troubleshoot with <strong>Effective security rules</strong> and
+Network Watcher's <strong>IP flow verify</strong>.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked for <strong>the minimum number of NSGs</strong> ➜
+usually <strong>1</strong>. Associate it with all the subnets and use
+rules with specific destinations (e.g. HTTPS to subnet 2 and 3's ranges,
+RDP to one VM's IP).
+<ul>
+<li>Traffic inside the VNet is already allowed (65000).</li>
+<li>Everything else inbound is already denied (65500).</li>
+<li>Use more than one NSG only if the subnets are in <strong>different
+regions</strong> or the question demands it.</li>
+</ul></li>
+<li>If you're asked <strong>"RDP doesn't work but the rule allows 3389
+at priority 300"</strong> ➜ the NSG isn't the problem. Check the VM
+state or public IP (3.3).</li>
+<li>If you're asked <strong>"why is traffic blocked even though an allow
+rule exists"</strong> ➜ look for a <strong>lower-numbered deny</strong>,
+or a deny in the <em>other</em> NSG (subnet vs NIC).</li>
+</ul>
+<h2 id="43-public-ips-and-load-balancers">4.3 Public IPs and load
+balancers</h2>
+<p><strong>The idea.</strong> A <strong>public IP</strong> makes
+something reachable from the Internet. A <strong>load balancer</strong>
+spreads traffic across several VMs (the <strong>backend pool</strong>)
+and checks their health with <strong>probes</strong>.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li><strong>Public IP SKUs:</strong>
+<ul>
+<li><strong>Standard</strong>: static, secure by default (closed until
+an NSG allows traffic), zone-redundant.</li>
+<li><strong>Basic</strong>: retired September 2025, but still appears in
+exam questions.</li>
+</ul></li>
+<li><strong>Load balancer SKUs:</strong>
+<ul>
+<li><strong>Standard</strong>: production, zones, up to 1000 instances,
+needs NSGs.</li>
+<li><strong>Basic</strong>: retired.</li>
+</ul></li>
+<li><strong>The SKU-matching rule:</strong> VMs in a
+<strong>Standard</strong> LB backend pool must have <strong>Standard
+public IPs or no public IP at all</strong>. A VM with a
+<strong>Basic</strong> public IP can't be added.</li>
+<li>VMs <strong>can be stopped</strong> and still be added to a backend
+pool.</li>
+<li>Backend pool members must be in the same VNet.</li>
+<li><strong>Public LB</strong> = Internet-facing frontend.
+<strong>Internal LB</strong> = private frontend.</li>
+<li>Which load-balancing service?</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Service</th>
+<th>Layer</th>
+<th>Scope</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Load Balancer</strong></td>
+<td>4 (TCP/UDP)</td>
+<td>Regional</td>
+<td>Any protocol, VMs</td>
+</tr>
+<tr class="even">
+<td><strong>Application Gateway</strong></td>
+<td>7 (HTTP/S)</td>
+<td>Regional</td>
+<td>URL/path routing, <strong>WAF</strong>, SSL termination</td>
+</tr>
+<tr class="odd">
+<td><strong>Front Door</strong></td>
+<td>7</td>
+<td>Global</td>
+<td>Global web apps, CDN + WAF</td>
+</tr>
+<tr class="even">
+<td><strong>Traffic Manager</strong></td>
+<td>DNS</td>
+<td>Global</td>
+<td>DNS-based routing (priority, performance, geographic)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"can these VMs join a Standard LB backend
+pool?"</strong> ➜ VMs with <strong>no PIP</strong> ✅, <strong>Standard
+PIP</strong> ✅, <strong>Basic PIP</strong> ❌. Whether the VM is
+stopped doesn't matter.</li>
+<li>If you're asked <strong>how to fix the Basic-PIP VM</strong> ➜
+<strong>remove its public IP</strong> (✅) or <strong>upgrade it to
+Standard</strong> (✅). Adding another <strong>Basic</strong> PIP to a
+VM ➜ ❌ (creates a mismatch).</li>
+<li>If you're asked about <strong>path-based routing or a web
+application firewall</strong> ➜ <strong>Application Gateway</strong>.
+<strong>Global HTTP + WAF</strong> ➜ <strong>Front Door</strong>.
+<strong>DNS-based failover between regions</strong> ➜ <strong>Traffic
+Manager</strong>.</li>
+</ul>
+<h2 id="44-vnet-peering">4.4 VNet peering</h2>
+<p><strong>The idea.</strong> Peering connects two VNets so they act
+like one network over Microsoft's backbone. Use <strong>regional
+peering</strong> for the same region and <strong>global peering</strong>
+across regions.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>A peering is <strong>two links</strong>, one created on each VNet.
+Status:
+<ul>
+<li><strong>Initiated</strong> = only one side exists.</li>
+<li><strong>Connected</strong> = both sides exist.</li>
+<li><strong>Disconnected</strong> = one side was
+<strong>deleted</strong>. No traffic flows.</li>
+</ul></li>
+<li><strong>Peering isn't transitive.</strong> If A↔︎B and B↔︎C, A
+<strong>can't</strong> reach C unless you peer A↔︎C, or route through a
+hub NVA/firewall with "allow forwarded traffic".</li>
+<li><strong>Gateway transit:</strong> a spoke can use the hub's VPN
+gateway. Set <strong>"Allow gateway transit"</strong> on the
+<strong>hub</strong> side and <strong>"Use remote gateways"</strong> on
+the <strong>spoke</strong> side.</li>
+<li>Address spaces can't overlap. Changing a peered VNet's address space
+requires <strong>syncing</strong> the peering, and older guidance says
+delete the peering first.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked about <strong>a peering in the Disconnected
+state</strong> ➜ VMs can reach <strong>only their own VNet</strong>
+across that link. <strong>The first step to fix it is to delete the
+disconnected peering, then recreate it on both sides.</strong> Enabling
+gateway transit, changing subnets or address space don't fix it.</li>
+<li>If you're asked <strong>"A peers with B, B peers with C, can A reach
+C?"</strong> ➜ <strong>No</strong> (non-transitive).</li>
+<li>If you're asked <strong>"spoke VNet must use the hub's VPN to reach
+on-prem"</strong> ➜ <strong>Allow gateway transit</strong> (hub) +
+<strong>Use remote gateways</strong> (spoke).</li>
+</ul>
+<h2 id="45-vpn-gateway-expressroute-and-hybrid-connectivity">4.5 VPN
+Gateway, ExpressRoute and hybrid connectivity</h2>
+<p><strong>The idea.</strong> Connect on-prem networks or individual
+laptops to Azure VNets.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li><strong>Site-to-site (S2S)</strong> = office network ↔︎ VNet over
+IPsec. Needs:
+<ol type="1">
+<li>A <strong>VPN gateway</strong> in the VNet's
+<strong>GatewaySubnet</strong>.</li>
+<li>A <strong>local network gateway</strong> (represents your on-prem
+device: its public IP and on-prem address ranges).</li>
+<li>A <strong>connection</strong> (links the two, with a shared
+key).</li>
+<li>The on-prem VPN device configured.</li>
+</ol></li>
+<li><strong>Point-to-site (P2S)</strong> = one computer ↔︎ VNet.
+<ul>
+<li>Authentication: Azure certificates, Microsoft Entra ID (OpenVPN) or
+RADIUS.</li>
+<li>The client installs a <strong>VPN client configuration
+package</strong>. That package contains the routes. <strong>If the
+network topology changes (new peering, new address space), download and
+reinstall the package</strong> so the client learns the new routes.</li>
+</ul></li>
+<li><strong>Gateway types:</strong> <strong>route-based</strong> (the
+normal choice: supports P2S, BGP, ExpressRoute coexistence) vs
+<strong>policy-based</strong> (legacy, limited).</li>
+<li><strong>SKUs:</strong>
+<ul>
+<li><strong>Basic</strong> (legacy): no BGP, limited P2S, <strong>can't
+coexist with ExpressRoute</strong>.</li>
+<li><strong>VpnGw1–5</strong>: production, VpnGw1 is the cheapest. The
+<em>AZ</em> variants are zone-redundant.</li>
+</ul></li>
+<li><strong>ExpressRoute</strong> = a <strong>private</strong> circuit
+through a connectivity provider. It doesn't use the Internet. A
+<strong>S2S VPN can be the backup</strong> path (coexistence), which
+needs a route-based gateway of at least <strong>VpnGw1</strong>.</li>
+<li><strong>Virtual WAN</strong> = Microsoft-managed hub-and-spoke for
+<strong>many</strong> branches and any-to-any connectivity. It's big and
+complex.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>what to configure for a S2S VPN</strong> ➜
+<strong>VPN gateway + local network gateway + connection</strong> (plus
+GatewaySubnet if missing).</li>
+<li>If it's a <strong>failover for ExpressRoute, cost-effective</strong>
+➜ VPN gateway <strong>VpnGw1</strong> (not Basic) + local network
+gateway + connection. <strong>Virtual WAN / Virtual Hub</strong> ➜
+overkill.</li>
+<li>If you're asked <strong>"P2S client reaches VNet1 but not newly
+peered VNet2"</strong> ➜ <strong>re-download and reinstall the VPN
+client package</strong>. Gateway transit is already working if on-prem
+reaches VNet2. Restarting the gateway is for broken S2S tunnels.</li>
+<li>If you're asked about <strong>many branch offices with any-to-any
+connectivity at global scale</strong> ➜ <strong>Virtual
+WAN</strong>.</li>
+</ul>
+<h2 id="46-azure-bastion">4.6 Azure Bastion</h2>
+<p><strong>The idea.</strong> Bastion lets you RDP/SSH into VMs
+<strong>from the Azure portal over HTTPS</strong>, so VMs don't need
+public IPs or open RDP/SSH ports to the Internet.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li>Deployed into a subnet named <strong>AzureBastionSubnet</strong>
+(/26 or larger) in a VNet.</li>
+<li><strong>Always connects to the VM's private IP.</strong></li>
+<li>Reaches VMs in <strong>its own VNet and in peered VNets</strong>
+(including globally peered), so one Bastion can serve a
+hub-and-spoke.</li>
+<li>SKUs:
+<ul>
+<li>Developer: free, basic.</li>
+<li>Basic.</li>
+<li><strong>Standard</strong>: native client, IP-based connection,
+shareable links, scaling.</li>
+<li>Premium: session recording, private-only.</li>
+</ul></li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"can Bastion connect to VM1 using its
+private IP?"</strong> (same VNet) ➜ <strong>Yes</strong>.</li>
+<li><strong>"…only using its public IP?"</strong> ➜ <strong>No</strong>
+(Bastion uses private IPs; no public IP needed).</li>
+<li><strong>"…to a VM in another VNet?"</strong> ➜ <strong>Yes only if
+the VNets are peered</strong>. Otherwise <strong>No</strong>.</li>
+<li>If you're asked about <strong>secure admin access without public IPs
+or open 3389/22</strong> ➜ <strong>Bastion</strong>. Just-in-time VM
+access is an alternative from Defender for Cloud.</li>
+</ul>
+<h2 id="47-azure-dns">4.7 Azure DNS</h2>
+<p><strong>The idea.</strong> Azure DNS hosts your DNS zones on Azure's
+name servers. You can't <em>buy</em> domains with Azure DNS. You buy
+them from a registrar (or App Service Domains) and then host them in
+Azure.</p>
+<p><strong>How it works.</strong></p>
+<ul>
+<li><strong>Record types:</strong></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Record</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A / AAAA</td>
+<td>Name ➜ IPv4 / IPv6 address</td>
+</tr>
+<tr class="even">
+<td>CNAME</td>
+<td>Name ➜ another name (alias); <strong>not allowed at the zone
+apex</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Alias record</strong> (Azure)</td>
+<td>Points to an Azure resource (public IP, Traffic Manager, Front
+Door); works at the apex</td>
+</tr>
+<tr class="even">
+<td>MX</td>
+<td>Mail servers (also used for domain verification)</td>
+</tr>
+<tr class="odd">
+<td>TXT</td>
+<td>Text (domain verification, SPF)</td>
+</tr>
+<tr class="even">
+<td><strong>NS</strong></td>
+<td><strong>Delegates</strong> a (sub)domain to name servers</td>
+</tr>
+<tr class="odd">
+<td>SOA</td>
+<td>Zone authority info (auto-created, one per zone)</td>
+</tr>
+<tr class="even">
+<td>PTR</td>
+<td>Reverse lookup: IP ➜ name</td>
+</tr>
+<tr class="odd">
+<td>SRV</td>
+<td>Service location</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Delegating a subdomain</strong> (e.g.
+<code>portal.contoso.com</code> to its own zone):
+<ol type="1">
+<li>Create the child zone <code>portal.contoso.com</code>.</li>
+<li>Copy its <strong>4 name servers</strong>.</li>
+<li>In the parent zone, add an <strong>NS record named
+<code>portal</code></strong> with those servers.</li>
+</ol></li>
+<li><strong>Zone file import/export</strong> (moving a zone from another
+DNS server, BIND format) ➜ <strong>Azure CLI</strong>
+(<code>az network dns zone import</code>) and the <strong>Azure
+portal</strong>. <strong>Not PowerShell.</strong> Cloud Shell just runs
+the CLI.</li>
+<li><strong>Private DNS zones</strong> = name resolution inside VNets.
+Link the zone to VNets, and optionally <strong>auto-register</strong> VM
+names (a VNet can auto-register into only one private zone).</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked to <strong>delegate a subdomain</strong> ➜
+<strong>NS record</strong> in the parent zone. PTR, CNAME and TXT don't
+delegate.</li>
+<li>If you're asked to <strong>import an on-prem zone with minimal
+effort</strong> ➜ <strong>Azure CLI and Azure portal</strong>. (Older
+material says CLI only. If only one is asked for, choose
+<strong>CLI</strong>.)</li>
+<li>If you're asked to <strong>point the root domain
+(<code>contoso.com</code>) at an Azure resource</strong> ➜ <strong>alias
+record</strong> (CNAME can't sit at the apex).</li>
+<li>If you're asked about <strong>VMs resolving each other by name
+across VNets</strong> ➜ <strong>private DNS zone</strong> linked to the
+VNets with auto-registration.</li>
+</ul>
+<h3 id="-research--part-4">🔎 Research – Part 4</h3>
+<ul>
+<li><strong>Read (Microsoft Learn):</strong>
+<ul>
+<li>VNet overview: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview">https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview</a></li>
+<li>How NSGs work: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-group-how-it-works">https://learn.microsoft.com/en-us/azure/virtual-network/network-security-group-how-it-works</a></li>
+<li>Public IP addresses: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses">https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/public-ip-addresses</a></li>
+<li>Load balancer SKUs: <a
+href="https://learn.microsoft.com/en-us/azure/load-balancer/skus">https://learn.microsoft.com/en-us/azure/load-balancer/skus</a></li>
+<li>VNet peering: <a
+href="https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview">https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview</a></li>
+<li>VPN Gateway: <a
+href="https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways">https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways</a></li>
+<li>Point-to-site: <a
+href="https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about">https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about</a></li>
+<li>ExpressRoute + VPN coexistence: <a
+href="https://learn.microsoft.com/en-us/azure/expressroute/expressroute-howto-coexist-resource-manager">https://learn.microsoft.com/en-us/azure/expressroute/expressroute-howto-coexist-resource-manager</a></li>
+<li>Bastion: <a
+href="https://learn.microsoft.com/en-us/azure/bastion/bastion-overview">https://learn.microsoft.com/en-us/azure/bastion/bastion-overview</a></li>
+<li>Bastion with peering: <a
+href="https://learn.microsoft.com/en-us/azure/bastion/vnet-peering">https://learn.microsoft.com/en-us/azure/bastion/vnet-peering</a></li>
+<li>DNS subdomain delegation: <a
+href="https://learn.microsoft.com/en-us/azure/dns/delegate-subdomain">https://learn.microsoft.com/en-us/azure/dns/delegate-subdomain</a></li>
+<li>DNS zone import/export: <a
+href="https://learn.microsoft.com/en-us/azure/dns/dns-import-export">https://learn.microsoft.com/en-us/azure/dns/dns-import-export</a></li>
+</ul></li>
+<li><strong>Microsoft Learn path:</strong> search "AZ-104: Configure and
+manage virtual networks for Azure administrators".</li>
+<li><strong>Watch:</strong> John Savill – search "Azure networking deep
+dive", "Azure VNet peering", "Azure Load Balancer vs Application Gateway
+vs Front Door", "Azure DNS".</li>
+<li><strong>Cheat sheets:</strong> <a
+href="https://tutorialsdojo.com/azure-virtual-network-vnet/">https://tutorialsdojo.com/azure-virtual-network-vnet/</a>
+· <a
+href="https://tutorialsdojo.com/azure-vpn-gateway/">https://tutorialsdojo.com/azure-vpn-gateway/</a>
+· <a
+href="https://tutorialsdojo.com/azure-load-balancer/">https://tutorialsdojo.com/azure-load-balancer/</a>
+· <a
+href="https://tutorialsdojo.com/azure-dns/">https://tutorialsdojo.com/azure-dns/</a></li>
+<li><strong>Hands-on:</strong>
+<ul>
+<li>Peer two VNets, delete one side and watch the status change to
+<em>Disconnected</em>.</li>
+<li>Create an NSG with a deny rule and test it with <em>IP flow
+verify</em>.</li>
+<li>Deploy Bastion (Developer SKU) and connect to a VM with no public
+IP.</li>
+<li>Create a child DNS zone and delegate it with an NS record.</li>
+<li>Subnet practice: work out the usable IPs for /26, /27 and /28 by
+hand.</li>
+</ul></li>
+</ul>
+<hr />
+<h1 id="part-5--monitor-and-maintain">Part 5 – Monitor and Maintain</h1>
+<h2 id="51-choosing-the-right-monitoring-or-management-tool">5.1
+Choosing the right monitoring or management tool</h2>
+<p><strong>The idea.</strong> Azure has many "watch and advise" tools
+with similar names. The exam mainly tests whether you can pick the right
+one.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>What it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Azure Monitor – Metrics</strong></td>
+<td>Numbers over time (CPU %, requests); near real-time</td>
+</tr>
+<tr class="even">
+<td><strong>Azure Monitor – Logs (Log Analytics)</strong></td>
+<td>Detailed records you query with <strong>KQL</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Activity log</strong></td>
+<td><strong>Who did what</strong> to resources (create/delete/change);
+control plane; 90 days</td>
+</tr>
+<tr class="even">
+<td><strong>Alerts + action groups</strong></td>
+<td>Notify (email/SMS/push) or act (webhook, Logic App, runbook) when a
+condition is met</td>
+</tr>
+<tr class="odd">
+<td><strong>Diagnostic settings</strong></td>
+<td>Send a resource's logs/metrics to Log Analytics, Storage or Event
+Hubs</td>
+</tr>
+<tr class="even">
+<td><strong>Service Health</strong></td>
+<td>Problems with <strong>Azure itself</strong>: incidents, planned
+maintenance, advisories in your regions</td>
+</tr>
+<tr class="odd">
+<td><strong>Resource Health</strong></td>
+<td>Is <strong>this specific resource</strong> healthy right now?</td>
+</tr>
+<tr class="even">
+<td><strong>Azure Advisor</strong></td>
+<td><strong>Recommendations</strong>: Cost, Security, Reliability,
+Operational excellence, Performance</td>
+</tr>
+<tr class="odd">
+<td><strong>Cost Management</strong></td>
+<td><strong>Where the money went</strong> (Cost analysis), budgets,
+alerts, exports; also shows Advisor cost recommendations</td>
+</tr>
+<tr class="even">
+<td><strong>Application Insights</strong></td>
+<td>App performance monitoring: requests, exceptions, dependencies</td>
+</tr>
+<tr class="odd">
+<td><strong>Workbooks</strong></td>
+<td>Interactive reports/dashboards over existing data</td>
+</tr>
+</tbody>
+</table>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked to <strong>find unattached disks, idle VMs or
+right-sizing to cut costs</strong> ➜ <strong>Azure Advisor (Cost
+recommendations)</strong>. You can open it directly or via <strong>Cost
+Management ➜ Advisor recommendations</strong>.
+<ul>
+<li><strong>Only for certain subscriptions/resource groups</strong> ➜
+edit the <strong>Advisor configuration</strong> to include just those
+scopes.</li>
+<li><strong>Cost Analysis</strong> shows spending, not idle
+resources.</li>
+<li>Billing roles don't manage resources.</li>
+<li>Custom Monitor queries are more effort.</li>
+</ul></li>
+<li>If you're asked <strong>"admin must get email when Azure has an
+outage"</strong> ➜ <strong>Service Health alert</strong> + action group
+(email). Owner role ≠ notifications.</li>
+<li>If you're asked <strong>"who deleted this VM?"</strong> ➜
+<strong>Activity log</strong>.</li>
+<li>If you're asked <strong>"alert when CPU &gt; 80%"</strong> ➜
+<strong>metric alert</strong> + action group.</li>
+<li>If you're asked <strong>"query logs across many VMs"</strong> ➜
+<strong>Log Analytics</strong> workspace + KQL.</li>
+</ul>
+<h2 id="52-network-watcher-and-traffic-analytics">5.2 Network Watcher
+and Traffic Analytics</h2>
+<p><strong>The idea.</strong> <strong>Network Watcher</strong> is the
+network troubleshooting toolbox, enabled per region automatically.</p>
+<p><strong>How it works – tools:</strong></p>
+<ul>
+<li><strong>IP flow verify</strong> (is traffic allowed or denied, and
+by which NSG rule?)</li>
+<li><strong>NSG diagnostics</strong> and <strong>Effective security
+rules</strong></li>
+<li><strong>Next hop</strong> (where does a packet go?)</li>
+<li><strong>Connection troubleshoot</strong> and <strong>Connection
+monitor</strong></li>
+<li><strong>Packet capture</strong> (record traffic on a VM)</li>
+<li><strong>VPN troubleshoot</strong></li>
+<li><strong>Topology</strong></li>
+<li><strong>Flow logs</strong>: NSG flow logs are being retired in
+favour of <strong>VNet flow logs</strong>.</li>
+<li><strong>Traffic Analytics</strong> = analyses flow logs in a
+<strong>Log Analytics workspace</strong> to show traffic patterns, hot
+spots and threats.</li>
+</ul>
+<p><strong>Requirements to remember:</strong></p>
+<ul>
+<li><strong>Packet capture</strong> and <strong>connection
+troubleshoot</strong> need the <strong>Network Watcher Agent VM
+extension</strong> installed on the VM.</li>
+<li><strong>Traffic Analytics</strong> needs:
+<ul>
+<li>Network Watcher enabled</li>
+<li>Flow logs on</li>
+<li>A storage account for the raw logs</li>
+<li>A Log Analytics workspace</li>
+<li>Role: <strong>Owner, Contributor or Network
+Contributor</strong></li>
+</ul></li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked about <strong>the first step for packet capture on a
+VM</strong> ➜ <strong>install the Network Watcher Agent VM
+extension</strong>.
+<ul>
+<li>Not the Azure Monitor agent (OS/app telemetry).</li>
+<li>Not the Performance Diagnostics agent (OS performance and boot
+issues).</li>
+<li>Not Defender for Servers (security).</li>
+</ul></li>
+<li>If you're asked <strong>"why can't VM A reach VM B on port
+443?"</strong> ➜ <strong>IP flow verify</strong> (which rule blocks it)
+or <strong>Connection troubleshoot</strong>.</li>
+<li>If you're asked <strong>"visualise traffic distribution across the
+network"</strong> ➜ <strong>Traffic Analytics</strong>.</li>
+</ul>
+<h2 id="53-app-service-diagnostics">5.3 App Service diagnostics</h2>
+<p><strong>The idea.</strong> When a web app throws errors, developers
+need the <strong>raw details</strong> of what happened.</p>
+<p><strong>How it works – App Service logs</strong> (App Service ➜
+<em>App Service logs</em>):</p>
+<ul>
+<li><strong>Application logging</strong>: your code's trace output
+(filesystem or blob).</li>
+<li><strong>Web server logging</strong>: raw HTTP request logs in
+<strong>W3C format</strong> (method, URL, client IP, <strong>status
+code</strong> such as 500).</li>
+<li><strong>Detailed error messages</strong>: the HTML error pages for
+HTTP 400+ responses.</li>
+<li><strong>Failed request tracing</strong>: deep traces of failed
+requests.</li>
+<li><strong>Log stream</strong>: see the logs
+<strong>live</strong>.</li>
+<li>Also useful: <strong>Diagnose and solve problems</strong> (built-in
+troubleshooters) and <strong>Application Insights</strong> (exceptions,
+performance).</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"developers need real-time, detailed
+visibility into HTTP 500 errors"</strong> ➜ <strong>turn on web server
+logging</strong> (and detailed errors), then watch the <strong>log
+stream</strong>.
+<ul>
+<li>An <strong>alert rule</strong> only notifies; it doesn't capture the
+detail.</li>
+<li>A <strong>Service Health alert</strong> = Azure platform problems,
+not your app.</li>
+<li>A <strong>workbook</strong> = visualisation of data you already
+collect.</li>
+</ul></li>
+<li>If you're asked about <strong>exceptions with stack traces and
+performance over time</strong> ➜ <strong>Application
+Insights</strong>.</li>
+</ul>
+<h2 id="54-azure-backup">5.4 Azure Backup</h2>
+<p><strong>The idea.</strong> Backup keeps <strong>copies of data over
+time</strong> so you can go back to yesterday or last week. This is
+different from replication (5.5), which keeps a <strong>live copy
+elsewhere</strong> for disaster recovery.</p>
+<p><strong>How it works – two kinds of vault:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Vault</th>
+<th>Backs up</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Recovery Services vault</strong></td>
+<td><strong>Azure VMs</strong>, <strong>Azure Files shares</strong>, SQL
+Server and SAP HANA <strong>in Azure VMs</strong>, on-prem files/folders
+(<strong>MARS agent</strong>), MABS/DPM servers; also used by Site
+Recovery</td>
+</tr>
+<tr class="even">
+<td><strong>Backup vault</strong></td>
+<td><strong>Azure Blobs</strong>, Azure Disks, Azure Database for
+PostgreSQL, AKS, …</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>The vault must be in the same region as the resources it
+protects</strong> (for Azure Files, the storage account's region).</li>
+<li><strong>Order to back up VMs:</strong>
+<ol type="1">
+<li><strong>Create a Recovery Services vault</strong>.</li>
+<li><strong>Create or choose a backup policy</strong> (schedule +
+retention; <em>Standard</em> or <em>Enhanced</em>, where Enhanced allows
+multiple backups a day and is needed for Trusted Launch VMs).</li>
+<li><strong>Enable backup</strong> on the VMs.</li>
+</ol></li>
+<li>Azure VM backup <strong>doesn't need you to install an
+agent</strong>. It uses a VM extension automatically. The <strong>MARS
+agent</strong> is only for file/folder backup (on-prem, or inside a
+VM).</li>
+<li>Set the vault's <strong>storage redundancy</strong> (GRS default,
+LRS, ZRS) <strong>before</strong> the first backup. Optional
+<strong>Cross Region Restore</strong>.</li>
+<li><strong>Soft delete</strong> keeps deleted backup data for 14 days
+by default.</li>
+<li><strong>Restore options for a VM:</strong>
+<ul>
+<li><strong>Create a new VM</strong>.</li>
+<li><strong>Restore disks</strong> (then build a VM yourself).</li>
+<li><strong>Replace existing</strong> disks (the original VM must still
+exist).</li>
+<li><strong>Cross Region Restore</strong> (if enabled).</li>
+<li>You <strong>can't</strong> restore VM A's backup <em>onto</em> a
+different existing VM B.</li>
+</ul></li>
+<li><strong>File recovery (item-level):</strong> pick a recovery point ➜
+download a <strong>script</strong> ➜ run it on a machine to
+<strong>mount the recovery point as drives</strong> ➜ copy the files.
+Run the script on a machine with the <strong>same OS version (or its
+matching client OS)</strong>. You can't restore files from Windows
+Server 2016 onto 2012. On the exam, treat "different server OS version"
+as <strong>not compatible</strong>.</li>
+<li><strong>Backup reports:</strong> send the vault's diagnostics to a
+<strong>Log Analytics workspace</strong>. The workspace can be in
+<strong>any region and any subscription</strong>. Unlike the vault
+itself, it doesn't have to match.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"what do you create first to back up
+VMs?"</strong> ➜ <strong>Recovery Services vault</strong>, then a
+policy.
+<ul>
+<li><strong>MABS</strong> is for on-prem and needs a vault too.</li>
+<li>A <strong>Recovery Plan</strong> belongs to Site Recovery, not
+Backup.</li>
+</ul></li>
+<li>If you're asked <strong>which vault can back up which
+resource</strong> ➜ check <strong>(1) same region</strong> and
+<strong>(2) supported type</strong>. A Recovery Services vault ➜ VMs and
+<strong>file shares</strong> in its region. <strong>Blob containers ➜
+Backup vault</strong>, never a Recovery Services vault.</li>
+<li>If you're asked <strong>"where can you run file recovery for VM
+X"</strong> ➜ <strong>only machines with a compatible OS</strong>,
+usually the VM itself or one with the same OS version.</li>
+<li>If you're asked <strong>"where can you restore VM X"</strong> ➜
+<strong>as VM X</strong> (replace disks), as a <strong>new VM</strong>,
+or as disks. You can't restore onto another existing VM.</li>
+<li>If you're asked <strong>which Log Analytics workspace can store
+Backup report data</strong> ➜ <strong>any of them</strong>, regardless
+of region.</li>
+</ul>
+<h2 id="55-azure-site-recovery-disaster-recovery">5.5 Azure Site
+Recovery (disaster recovery)</h2>
+<p><strong>The idea.</strong> Site Recovery <strong>continuously
+replicates</strong> VMs to another region (or from on-prem to Azure). If
+the primary region goes down, you <strong>fail over</strong> and run
+there.</p>
+<p><strong>How it works – lifecycle:</strong></p>
+<ol type="1">
+<li><strong>Enable replication.</strong> Azure installs the Mobility
+service extension, uses a cache storage account in the source region,
+and stores everything in a <strong>Recovery Services vault in the target
+region</strong>.</li>
+<li><strong>Test failover</strong> (optional, recommended): bring up
+copies in an isolated VNet for a <strong>DR drill</strong>, then clean
+up. Production keeps running.</li>
+<li><strong>Failover</strong>: for a <strong>real outage</strong>.
+Choose a recovery point (latest, latest processed, latest
+app-consistent, custom).</li>
+<li><strong>Commit</strong> the failover.</li>
+<li><strong>Reprotect</strong>: start replicating <strong>back</strong>
+from the secondary region to the primary.</li>
+<li><strong>Failback</strong>: once the primary region is healthy, fail
+over back to it (then reprotect again).</li>
+</ol>
+<ul>
+<li><strong>Recovery plans</strong> group VMs so they fail over in order
+(database first, then app), with scripts or runbooks.</li>
+<li><strong>RPO</strong> = how much data you can lose.
+<strong>RTO</strong> = how long you can be down.</li>
+</ul>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"primary region is down now, which
+actions?"</strong> ➜ <strong>verify the VMs are protected and healthy ➜
+run a failover ➜ reprotect</strong>.
+<ul>
+<li><strong>Initiate replication</strong> = initial setup, already
+done.</li>
+<li><strong>Test failover</strong> = drills only.</li>
+<li><strong>Failback</strong> = later, when the primary region is
+back.</li>
+</ul></li>
+<li>If you're asked to <strong>prove DR works without affecting
+production</strong> ➜ <strong>test failover</strong>.</li>
+<li>If you're asked to <strong>move a VM into availability zones using
+Site Recovery</strong> ➜ the VM needs <strong>managed disks</strong>
+first (3.4).</li>
+</ul>
+<h2 id="56-streaming-metrics-stream-analytics--event-processing">5.6
+Streaming metrics (Stream Analytics / event processing)</h2>
+<p><strong>The idea.</strong> When events flow in from Event Hubs or IoT
+Hub, metrics tell you whether processing keeps up.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Backlogged Input Events</strong></td>
+<td>Events <strong>waiting</strong> to be processed. If it keeps
+growing, you can't keep up ➜ scale out</td>
+</tr>
+<tr class="even">
+<td><strong>Watermark Delay</strong></td>
+<td>How <strong>late</strong> processing is compared with event
+time</td>
+</tr>
+<tr class="odd">
+<td>Out-of-Order Events / Late Input Events</td>
+<td>Events arriving out of sequence or after the allowed window</td>
+</tr>
+<tr class="even">
+<td>Runtime errors / Function execution errors</td>
+<td>Failures, not backlog</td>
+</tr>
+<tr class="odd">
+<td>SU % utilization</td>
+<td>How busy the Stream Analytics job is</td>
+</tr>
+</tbody>
+</table>
+<p>These metric names belong to <strong>Azure Stream Analytics</strong>
+jobs. For an Event Hubs-triggered Azure Function, the equivalent signal
+is consumer <strong>lag</strong> (incoming vs outgoing messages on the
+Event Hub, or Application Insights).</p>
+<p><strong>🧭 Scenario guide</strong></p>
+<ul>
+<li>If you're asked <strong>"which metric shows the number of
+unprocessed events?"</strong> ➜ <strong>Backlogged Input
+Events</strong>.</li>
+<li>If you're asked <strong>"how delayed is processing?"</strong> ➜
+<strong>Watermark Delay</strong>.</li>
+<li>If you're asked <strong>"are events arriving in the wrong
+order?"</strong> ➜ <strong>Out-of-Order Events</strong>.</li>
+</ul>
+<h3 id="-research--part-5">🔎 Research – Part 5</h3>
+<ul>
+<li><strong>Read (Microsoft Learn):</strong>
+<ul>
+<li>Azure Monitor overview: <a
+href="https://learn.microsoft.com/en-us/azure/azure-monitor/overview">https://learn.microsoft.com/en-us/azure/azure-monitor/overview</a></li>
+<li>Service Health: <a
+href="https://learn.microsoft.com/en-us/azure/service-health/overview">https://learn.microsoft.com/en-us/azure/service-health/overview</a></li>
+<li>Advisor: <a
+href="https://learn.microsoft.com/en-us/azure/advisor/advisor-overview">https://learn.microsoft.com/en-us/azure/advisor/advisor-overview</a></li>
+<li>Advisor cost recommendations: <a
+href="https://learn.microsoft.com/en-us/azure/advisor/advisor-cost-recommendations">https://learn.microsoft.com/en-us/azure/advisor/advisor-cost-recommendations</a></li>
+<li>Network Watcher: <a
+href="https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-overview">https://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-overview</a></li>
+<li>Traffic Analytics: <a
+href="https://learn.microsoft.com/en-us/azure/network-watcher/traffic-analytics">https://learn.microsoft.com/en-us/azure/network-watcher/traffic-analytics</a></li>
+<li>App Service diagnostic logs: <a
+href="https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs">https://learn.microsoft.com/en-us/azure/app-service/troubleshoot-diagnostic-logs</a></li>
+<li>Azure Backup overview: <a
+href="https://learn.microsoft.com/en-us/azure/backup/backup-overview">https://learn.microsoft.com/en-us/azure/backup/backup-overview</a></li>
+<li>Recovery Services vaults: <a
+href="https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview">https://learn.microsoft.com/en-us/azure/backup/backup-azure-recovery-services-vault-overview</a></li>
+<li>Restore VMs: <a
+href="https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms">https://learn.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms</a></li>
+<li>Recover files from VM backup: <a
+href="https://learn.microsoft.com/en-us/azure/backup/backup-azure-restore-files-from-vm">https://learn.microsoft.com/en-us/azure/backup/backup-azure-restore-files-from-vm</a></li>
+<li>Backup reports: <a
+href="https://learn.microsoft.com/en-us/azure/backup/configure-reports">https://learn.microsoft.com/en-us/azure/backup/configure-reports</a></li>
+<li>Site Recovery overview: <a
+href="https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-overview">https://learn.microsoft.com/en-us/azure/site-recovery/site-recovery-overview</a></li>
+<li>Azure-to-Azure replication tutorial: <a
+href="https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-enable-replication">https://learn.microsoft.com/en-us/azure/site-recovery/azure-to-azure-tutorial-enable-replication</a></li>
+<li>Stream Analytics job metrics: <a
+href="https://learn.microsoft.com/en-us/azure/stream-analytics/stream-analytics-job-metrics">https://learn.microsoft.com/en-us/azure/stream-analytics/stream-analytics-job-metrics</a></li>
+</ul></li>
+<li><strong>Microsoft Learn path:</strong> search "AZ-104: Monitor and
+back up Azure resources".</li>
+<li><strong>Watch:</strong> John Savill – search "Azure Monitor deep
+dive", "Azure Backup deep dive", "Azure Site Recovery".</li>
+<li><strong>Cheat sheets:</strong> <a
+href="https://tutorialsdojo.com/azure-advisor/">https://tutorialsdojo.com/azure-advisor/</a>
+· <a
+href="https://tutorialsdojo.com/azure-virtual-machines/">https://tutorialsdojo.com/azure-virtual-machines/</a>
+(backup and ASR sections)</li>
+<li><strong>Hands-on:</strong>
+<ul>
+<li>Open Advisor and filter the Cost category.</li>
+<li>Create a Service Health alert with an email action group.</li>
+<li>Back up a test VM, then run <em>File Recovery</em> and look at the
+script.</li>
+<li>Turn on web server logging for a test web app and open the log
+stream.</li>
+</ul></li>
+</ul>
+<hr />
+<h1 id="how-to-read-az-104-questions">How to read AZ-104 questions</h1>
+<ul>
+<li><strong>Answer every question.</strong> There's no penalty for a
+wrong answer.</li>
+<li><strong>Scan the tables first</strong> for the columns that decide
+the answer: <strong>region, SKU, kind, state (running / deallocated), OS
+version, redundancy, peering status</strong>.</li>
+<li><strong>"Minimize administrative effort" or "most
+cost-effective"</strong> points to the <strong>built-in
+feature</strong>: lifecycle management, Advisor, one App Service plan,
+one NSG, group-based licensing, CLI/portal import.</li>
+<li><strong>Order-of-steps questions:</strong> for each step, ask "what
+must already exist for this to work?" Then build the chain from the
+bottom.</li>
+<li><strong>Yes/No "does the solution meet the goal" series:</strong>
+judge each solution on its own. The same scenario will have different
+correct answers.</li>
+<li><strong>Case studies:</strong> read the actual question first, then
+search the scenario only for the requirements it mentions. Names
+sometimes differ between scenario and question, so match by role ("the
+admin user"), not by name.</li>
+<li><strong>Outdated wording:</strong> Azure AD = Microsoft Entra ID.
+Basic SKUs (public IP, load balancer) are retired, but they still appear
+as distractors. Practice tests sometimes lag behind the docs, so when in
+doubt, check Microsoft Learn.</li>
+</ul>
+<button id="tt" onclick="var r=document.documentElement,d=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);r.setAttribute('data-theme',d?'light':'dark')">◐ Theme</button>
+</body>
+</html>
